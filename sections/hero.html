@@ -136,11 +136,14 @@
                     </div>
 
                     <!-- Frame HP -->
-                    <div class="relative rounded-[2.75rem] bg-ink p-2.5 shadow-card ring-1 ring-black/5">
-                        <div class="relative overflow-hidden rounded-[2.25rem] bg-[#FAFCFA]">
+                    <div id="phone-tilt" class="relative rounded-[2.75rem] bg-ink p-2.5 shadow-card ring-1 ring-black/5 pointer-events-auto group cursor-pointer">
+                        <div id="phone-frame" class="relative overflow-hidden rounded-[2.25rem] bg-[#FAFCFA] shadow-[0_0_40px_rgba(0,179,104,0.25)] transition-all duration-300 group-hover:shadow-[0_0_60px_rgba(0,179,104,0.45)] animate-float-slow">
 
                             <!-- Notch -->
                             <div class="absolute left-1/2 top-2 z-20 h-5 w-20 -translate-x-1/2 rounded-full bg-ink/90"></div>
+
+                            <!-- Layar ponsel (konten berganti saat fitur di kartu diklik) -->
+                            <div id="phone-screen" class="relative h-full transition-opacity duration-300 ease-out">
 
                             <!-- Status bar -->
                             <div class="relative z-10 flex items-center justify-between px-5 pt-3 text-[10px] font-semibold text-ink-soft">
@@ -214,6 +217,7 @@
                                     </a>
                                 </div>
                             </div>
+                            </div> <!-- tutup #phone-screen -->
 
                             <!-- Bottom navigation -->
                             <div class="absolute inset-x-0 bottom-0 z-20 border-t border-slate-100 bg-white/95 px-3 pb-3 pt-2 backdrop-blur">
