@@ -1,0 +1,14 @@
+{
+  "name": "lifesync-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LifeSync - product profile website (static HTML/CSS/JS)",
+  "scripts": {
+    "serve": "node tools/serve.js",
+    "validate": "node tools/validate.js",
+    "depth": "node tools/depth.js",
+    "test:browser": "node tools/browser-test.js",
+    "test": "node tools/validate.js && node tools/browser-test.js"
+  },
+  "license": "UNLICENSED"
+}

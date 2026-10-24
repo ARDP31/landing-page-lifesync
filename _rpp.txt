@@ -1,0 +1,620 @@
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+Nomor ID :  PBL-TRPL507 
+Pengusul Proyek : Supardianto, M.Eng.  
+Manajer proyek : Ummul Fitri Afifah, S.Kom., M.MSI 
+Judul Proyek : LifeSync: Daily Habit Tracker and Assistance  
+Luaran : Produk Aplikasi, HKI, Laporan Akhir, Video Demo, Poster, Manual Book 
+Sponsor : - 
+Biaya : Rp 1,000,000.00 
+Klien/Pelanggan : Pengguna individu / masyarakat umum  
+Waktu  : 1 Semester 
+1. Ruang lingkup 
+Ruang lingkup pengembangan LifeSync: Daily Habit Tracker & Assistance mencakup perancangan, 
+pembangunan, pengujian, dan pemeliharaan aplikasi personal management yang mengintegrasikan berbagai 
+kebutuhan pengelolaan aktivitas sehari-hari pengguna dalam satu platform. 
+Fitur utama yang direncanakan meliputi pengelolaan jadwal dan tugas, pencatatan kebiasaan, 
+pemantauan kesehatan dasar, pencatatan dan pemantauan pengeluaran pribadi, catatan, serta jurnal dan 
+Memento. Selain itu, LifeSync menyediakan fitur Assistance berupa pengingat dan bantuan kontekstual 
+berdasarkan aktivitas dan data yang dimasukkan oleh pengguna, seperti pengingat minum air atau pengingat 
+waktu istirahat setelah aktivitas yang berlangsung cukup l ama. Fitur AI juga digunakan sebagai fitur 
+pendukung untuk membantu pengguna memperoleh informasi atau insight berdasarkan data yang tersedia.  
+Pengembangan produk difokuskan pada kebutuhan pengguna berdasarkan hasil validasi masalah, 
+masukan pengguna, dan prioritas pengembangan. Setiap fitur dikembangkan secara bertahap sehingga 
+kebutuhan dan fitur dengan prioritas lebih tinggi dapat dikembangkan  terlebih dahulu dan dievaluasi pada 
+proses pengembangan berikutnya. 
+2. Desain Umum 
+ 
+LifeSync dirancang sebagai aplikasi personal management yang memungkinkan pengguna mengelola 
+berbagai aktivitas dan informasi pribadi dalam satu platform. Informasi seperti jadwal, tugas, kebiasaan, 
+kesehatan, pengeluaran, catatan, dan memento (Photo Journal dengan GPS tagging) dirancang agar dapat saling 
+berkaitan sehingga pengguna dapat memperoleh gambaran aktivitas sehari-hari secara lebih terintegrasi. 
+Secara umum, sistem terdiri atas antarmuka pengguna, layanan aplikasi, basis data, serta layanan 
+pendukung seperti AI Agent. Sistem memungkinkan pengguna memasukkan dan mengelola data aktivitas 
+secara mandiri, kemudian menggunakan data tersebut untuk menam pilkan ringkasan, riwayat, pengingat, 
+dan informasi pendukung. 
+
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+Fitur Assistance dirancang untuk memberikan pengingat berdasarkan kondisi atau data yang 
+dimasukkan pengguna. Contohnya, pengguna dapat mengaktifkan pengingat minum air dan mencatat 
+apakah kebutuhan minum pada hari tersebut telah dilakukan. Sistem juga dap at memberikan pengingat 
+untuk beristirahat setelah pengguna memiliki aktivitas dengan durasi yang panjang pada planner. Pengingat 
+bersifat sebagai bantuan dan tidak menganggap suatu aktivitas telah dilakukan apabila pengguna belum 
+mencatat atau mengonfirmasinya. 
+Fitur Memento digunakan untuk menyimpan jurnal dan dokumentasi momen pribadi, seperti foto, 
+catatan pengalaman, atau aktivitas tertentu. Dengan demikian, Memento tidak hanya berfungsi sebagai 
+penyimpanan foto, tetapi menjadi bagian dari riwayat pengalaman pengguna yang dapat melengkapi 
+aktivitas yang telah dicatat dalam LifeSync. 
+Perancangan sistem meliputi desain UI/UX, arsitektur sistem, perancangan basis data, alur proses, struktur 
+aplikasi, serta rancangan integrasi layanan pendukung yang diperlukan. 
+3. Konstruksi Produk 
+ 
+Pengembangan LifeSync menggunakan metode Agile Scrum  dengan pendekatan iteratif dan 
+inkremental. Pengembangan dilakukan dalam beberapa Sprint, dengan setiap Sprint menghasilkan 
+peningkatan atau bagian produk yang dapat dievaluasi. Prioritas pekerjaan ditentukan berdasarkan Product 
+Backlog dan dapat disesuaikan berdasarkan hasil evaluasi serta masukan pengguna.  
+Secara umum, proses konstruksi produk dilakukan melalui aktivitas berikut:  
+a. Product Backlog Preparation 
+Tim mengidentifikasi dan menyusun kebutuhan serta fitur yang akan dikembangkan ke dalam Product 
+Backlog. Setiap fitur diprioritaskan berdasarkan kebutuhan pengguna dan tujuan produk.  
+b. Sprint Planning 
+Pada awal Sprint, tim menentukan fitur atau pekerjaan yang akan dikerjakan dengan 
+mempertimbangkan prioritas Product Backlog dan kapasitas tim. Pekerjaan yang dipilih kemudian 
+dimasukkan ke dalam Sprint Backlog. 
+c. Design and Development 
+Tim melakukan perancangan dan implementasi fitur yang telah dipilih. Aktivitas dapat mencakup 
+perancangan UI/UX, database, alur proses, frontend, backend, serta integrasi layanan pendukung 
+seperti AI Agent. Design dan development dapat dilakukan secara ber tahap dan disesuaikan selama 
+proses pengerjaan. 
+d. Testing and Integration 
+Fitur yang telah dikembangkan diuji untuk memastikan fungsi berjalan sesuai kebutuhan dan dapat 
+terintegrasi dengan fitur lainnya. Pengujian dilakukan selama proses pengembangan sehingga 
+kesalahan dapat ditemukan dan diperbaiki lebih awal. 
+e. Sprint Review and Evaluation 
+
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+Hasil pengembangan pada akhir Sprint ditinjau untuk melihat kesesuaian dengan kebutuhan dan tujuan 
+produk. Masukan dari tim, pengguna, atau stakeholder digunakan sebagai dasar untuk melakukan 
+perbaikan dan memperbarui prioritas Product Backlog. 
+f. Sprint Retrospective 
+Tim mengevaluasi proses kerja selama Sprint, termasuk kendala, komunikasi, pembagian tugas, dan 
+hal yang perlu diperbaiki. Hasil evaluasi digunakan untuk meningkatkan proses kerja pada Sprint 
+berikutnya. 
+g. Product Maintenance 
+Setelah produk digunakan, dilakukan pemeliharaan berupa perbaikan bug, peningkatan performa, 
+pembaruan keamanan, dan pengembangan fitur berdasarkan kebutuhan pengguna. Perubahan atau 
+pengembangan lanjutan dapat kembali dimasukkan ke dalam Product Backlog dan dikerjakan melalui 
+Sprint 
+ 
+4. Kebutuhan Peralatan/Perangkat dan Bahan/Komponen 
+Fase/Proses Peralatan/Perangkat (SW/HW) Bahan/Komponen Nama Jumlah Catatan Nama Jumlah Catatan 
+Product 
+Backlog 
+Preparation 
+PC dan Internet, 
+Microsoft Teams 
+(penyusunan 
+backlog), Microsoft 
+Excel/Word 
+(dokumentasi 
+kebutuhan) 
+5 Backlog disusun dalam 
+bentuk user story 
+dengan prioritas 
+- - - 
+Sprint Planning PC dan Internet, 
+Microsoft Teams 
+(Sprint Backlog 
+board), Discord 
+(rapat planning) 
+5 Dilakukan di awal tiap 
+Sprint 
+- - - 
+Design and 
+Development 
+PC, Figma/draw.io 
+(UI/UX & alur 
+proses), VS Code, 
+Flutter, Dart, 
+Laravel, Database 
+Software (SQLlite), 
+Git/GitHub, 
+Postman (API), 
+Claude API (AI 
+Agent) 
+5 Mencakup perancangan 
+UI/UX, database, 
+frontend, backend, dan 
+integrasi AI Agent 
+- - - 
+Testing and 
+Integration 
+PC, 
+Device/Emulator, 
+Postman (API 
+testing), Flutter 
+Test/Widget Test, 
+Git/GitHub 
+5 Dilakukan 
+berkelanjutan selama 
+development, bukan di 
+akhir 
+   
+Sprint Review 
+and Evaluation 
+PC dan Internet, 
+Microsoft Teams, 
+Discord. 
+5 Melibatkan tim, 
+pengguna, dan/atau 
+stakeholder 
+   
+Sprint 
+Retrospective 
+PC dan Internet, 
+Microsoft Teams, 
+Discor (atau media 
+diskusi tim) 
+5 Evaluasi proses kerja 
+tim 
+   
+Product 
+Maintenance 
+PC dan Internet, 
+Git/GitHub, 
+Firebase 
+Crashlytics/Sentry 
+5 Bug fix, peningkatan 
+performa, update 
+keamanan, fitur baru 
+masuk kembali ke 
+Product Backlog 
+   
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+Fase/Proses Peralatan/Perangkat (SW/HW) Bahan/Komponen Nama Jumlah Catatan Nama Jumlah Catatan 
+(monitoring), 
+Microsoft Teams 
+(backlog bug & fitur 
+baru) 
+ 
+ 
+5. Tantangan dan Isu 
+No Proses/Fase/ Peralatan/Bahan Tantangan/Isu Level Risiko* Rencana Tindakan Catatan 
+1 Development – 
+Integrasi AI Agent 
+(Gemini API) 
+Kuota free tier Gemini API 
+terbatas (rate limit per 
+menit/hari), berpotensi terkena 
+limit saat testing bersamaan 
+oleh banyak anggota tim, serta 
+latensi respons memengaruhi 
+UX 
+M Terapkan caching hasil AI, 
+batasi frekuensi 
+pemanggilan API, 
+gunakan rule-based untuk 
+logika sederhana 
+(reminder), pantau kuota 
+di Google AI Studio 
+ 
+2 Development – 
+Cross-domain data 
+(Planner, Finance, 
+Health, Notes) 
+Kompleksitas integrasi data 
+antar modul berpotensi 
+memperlambat progres Sprint 
+H Prioritaskan MVP per 
+modul dulu, integrasi 
+cross-domain dikerjakan 
+bertahap per Sprint 
+ 
+3 Sprint Planning – 
+Kapasitas tim 
+mahasiswa 
+Anggota tim memiliki 
+kesibukan akademik lain (tugas 
+mata kuliah lain, ujian) yang 
+dapat mengganggu jadwal 
+Sprint 
+M Sesuaikan Sprint Backlog 
+dengan kalender 
+akademik, komunikasi 
+rutin lewat Microsoft 
+Teams/Discord 
+ 
+4 Testing – 
+Perangkat 
+pengujian 
+(Device/Emulator) 
+Keterbatasan variasi perangkat 
+fisik untuk pengujian lintas 
+versi Android/iOS 
+L Gunakan borang device 
+atau emulator dengan 
+berbagai konfigurasi, 
+prioritaskan device yang 
+paling umum dipakai 
+target user 
+ 
+5 Product 
+Maintenance – 
+Pasca-launch 
+Tidak ada anggaran/tim 
+dedicated untuk maintenance 
+setelah masa PBL berakhir 
+H Susun dokumentasi teknis 
+lengkap agar mudah 
+diteruskan tim berikutnya, 
+pertimbangkan hosting 
+gratis/murah untuk 
+keberlangsungan 
+ 
+*H: High; M: Medium; L: Low 
+ 
+6. Estimasi Waktu Pekerjaan 
+Fase/Proses Uraian Pekerjaan Estimasi Waktu Catatan 
+Planning 
+Pencarian dan penetapan judul proyek, 
+penyusunan Product Backlog awal, 
+pembagian tim, serta identifikasi kebutuhan 
+fungsional/non-fungsional 
+2 minggu  
+Sprint 1 
+Penyusunan RPP, pembuatan wireframe, 
+perancangan system architecture, database 
+schema, desain AI Agent workflow & 
+architecture, pengembangan greeting page, 
+initial home page, integrasi struktur frontend 
+awal, serta testing & dokumentasi 
+3 minggu  
+Sprint 2 Pengembangan modul autentikasi (login/register), pengembangan modul Planner 3 minggu  
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+Fase/Proses Uraian Pekerjaan Estimasi Waktu Catatan 
+(CRUD task), integrasi database dengan 
+backend Laravel, pengembangan local 
+notification untuk reminder task, serta testing 
+& dokumentasi 
+Sprint 3 
+Pengembangan modul Finance (CRUD 
+transaksi & kategori), pengembangan modul 
+Health (log makan/minum & nutrisi), integrasi 
+awal Gemini API untuk AI Assistant, 
+penyempurnaan UI dashboard, serta testing & 
+dokumentasi 
+3 minggu  
+Sprint 4 
+Pengembangan modul Notes/Journal, 
+pengembangan fitur Memento (Photo Journal 
+dengan GPS tagging), pembangunan 
+Correlation Engine untuk insight lintas modul, 
+integrasi AI-generated insight (Gemini), serta 
+testing & dokumentasi 
+3 minggu  
+Sprint 5 
+Pengembangan smart notification (hybrid 
+online/offline), implementasi freemium gating, 
+bug fixing dan optimasi performa menyeluruh, 
+persiapan deployment (build APK & hosting 
+backend), serta final testing & dokumentasi 
+3 minggu  
+ 
+7. Indikator Kecapaian 
+Fase/Proses Kecapaiaan 
+Planning 
+Judul proyek ditetapkan; Product Backlog awal tersusun; tim terbentuk dengan 
+pembagian tugas jelas; kebutuhan fungsional/non-fungsional teridentifikasi dan 
+terdokumentasi 
+Sprint 1 
+RPP tersusun; wireframe, system architecture, database schema, dan desain AI 
+Agent workflow selesai; greeting page & initial home page berhasil dibangun; 
+struktur frontend awal terintegrasi; hasil testing terdokumentasi 
+Sprint 2 
+Modul autentikasi (login/register) berfungsi penuh; modul Planner (CRUD 
+task) berfungsi dan terhubung ke backend Laravel; local notification reminder 
+task berjalan sesuai jadwal; hasil testing terdokumentasi 
+Sprint 3 
+Modul Finance (CRUD transaksi & kategori) berfungsi; modul Health (log 
+makan/minum & nutrisi) berfungsi; integrasi awal Gemini API untuk AI 
+Assistant berhasil merespons input user; UI dashboard tersempurnakan; hasil 
+testing terdokumentasi 
+Sprint 4 
+Modul Notes/Journal berfungsi; fitur Memento (Photo Journal + GPS tagging) 
+berfungsi; Correlation Engine berhasil menghasilkan insight lintas modul; AI -
+generated insight dari Gemini terintegrasi ke dashboard; hasil testing 
+terdokumentasi 
+Sprint 5 
+Smart notification (hybrid online/offline) berfungsi sesuai desain (lokal untuk 
+semua user, push personal untuk premium); freemium gating berhasil 
+diterapkan; bug fixing dan optimasi performa selesai; APK berhasil di-build 
+dan backend ter-hosting; dokumentasi final lengkap 
+ 
+8. Biaya Proyek (Biaya Bahan dan Peralatan) 
+    Fase/Proses Uraian Pekerjaan Perkiraan Biaya Catatan  
+Deploy Domain Rp 200,000.00  
+Deploy VPS Rp 300,000.00  
+Development & 
+Deploy 
+AI Agent Rp 500,000.00  
+Total  Rp   1,000,000.00  
+ 
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+9. Tim proyek (Dosen, Laboran dan/atau Mahasiswa) 
+No Nama NIK/NIM Program Studi 
+1 Recy Harviani Zurwanty, S.Pd., M.Pd. 125355 Pendidikan Pancasila 
+2 Sukma Evadini, S.T., M.Kom. 125360 Kecerdasan Bisnis 
+3 Arseto Hartantiyo Pinontoan, S.E., M.Sc 111076 Pengembangan Startup Digital 
+4 Alena Uperiati, S.T., M.Cs.  122279 Manajemen Proyek Perangkat Lunak 
+5 Agus Fatulloh, M.T. 170051 Keselamatan dan Kesehatan Kerja 
+6 Supardianto, M.Eng. 113105 Proyek Inovasi Agile 
+7 Muhammad Farhan 4342401008 Teknologi Rekayasa Perangkat Lunak 
+8 Raihan Putra Atmaja 4342401024 Teknologi Rekayasa Perangkat Lunak 
+9 Muhammad Ghiyats 4342411057 Teknologi Rekayasa Perangkat Lunak 
+10 Megahnanda Sucimuliani Pasolo 4342401022 Teknologi Rekayasa Perangkat Lunak 
+11 Ardila Dwi Putri 4342401027 Teknologi Rekayasa Perangkat Lunak 
+ 
+10. Ruang Kerja (Workspace)/Laboratorium/Workshop 
+Working space Gedung Technopreneur, Gedung Utama, atau Gedung Tower A  
+11. Mata Kuliah, Capaian Pembelajaran dan Capaian Pembelajaran Mata  Kuliah yang terlibat 
+No. Nama Mata Kuliah Capaian Pembelajaran Capaian Pembelajaran Mata Kuliah 
+1. Kecerdasan Bisnis CPL-7  
+Mampu mengolah, menganalisis, dan 
+menyajikan data bisnis menggunakan teknik 
+statistik dan tools Business Intelligence 
+untuk menghasilkan dashboard interaktif, 
+laporan analitik, dan insight yang 
+mendukung pengambilan keputusan 
+organisasi. 
+Mampu mengidentifikasi peran BI dalam 
+organisasi, menganalisis arsitektur dan 
+teknologi BI termasuk data warehouse, 
+ETL, dan DBMS/NoSQL, serta 
+mengevaluasi proses pengolahan data untuk 
+mendukung kebutuhan bisnis. 
+Mampu menerapkan teknik analisis data 
+dan visualisasi untuk mengidentifikasi pola 
+dan tren bisnis, menggunakan tools BI 
+modern untuk pembuatan dashboard, serta 
+menganalisis peran integrasi BI dengan ML 
+dan AI. 
+Mampu merancang dan 
+mengimplementasikan data mart untuk 
+analisis multidimensi dan OLAP, serta 
+membangun dashboard interaktif 
+menggunakan Power BI dengan optimasi 
+DAX 
+2. Pengembangan Startup 
+Digital 
+CPL-9 
+Mampu mengevaluasi dampak sosial, 
+ekonomi, hukum, dan lingkungan dari 
+solusi teknologi yang dikembangkan, 
+menerapkan prinsip etika profesi rekayasa 
+perangkat lunak, serta berkomitmen pada 
+pembelajaran sepanjang hayat untuk 
+beradaptasi dengan perkembangan 
+teknologi. 
+CPL-10 
+Mampu menganalisis peluang bisnis 
+teknologi, menyusun model dan rencana 
+bisnis berbasis kebutuhan pasar, merancang 
+strategi pengembangan usaha digital yang 
+layak secara ekonomi dan patuh terhadap 
+regulasi, serta mengomunikasikan nilai 
+produk teknologi kepada pemangku 
+kepentingan. 
+Mampu menganalisis landscape bisnis 
+digital dan ekosistem startup serta 
+menerapkan etika bisnis dan menganalisis 
+peran founder dalam konteks 
+pengembangan startup teknologi. 
+Mampu mengidentifikasi permasalahan 
+nyata pengguna, merumuskan solusi 
+inovatif, menyusun lean canvas, serta 
+merancang dan menguji prototipe produk 
+dan MVP. 
+Mampu menyusun strategi go-to-market 
+yang komprehensif dan mengidentifikasi 
+aspek hukum, keuangan, serta perlindungan 
+HAKI yang relevan dalam operasional 
+startup digital. 
+Mampu menyusun pitch deck yang 
+persuasif dan menyampaikan presentasi 
+startup secara efektif di depan calon 
+investor melalui simulasi pitching 
+3. Manajemen Proyek 
+Perangkat Lunak 
+CPL-8 
+Mampu bekerja secara efektif dalam tim 
+multidisiplin, berkomunikasi secara 
+profesional dalam konteks teknis dan bisnis, 
+Mampu membandingkan dan menganalisis 
+pendekatan manajemen proyek tradisional 
+dan agile serta menerapkan metodologi 
+Scrum, Kanban, dan XP dalam simulasi 
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+serta merencanakan dan mengelola proyek 
+perangkat lunak menggunakan metodologi 
+agile dan prinsip manajemen proyek yang 
+relevan. 
+proyek menggunakan tools digital seperti 
+Trello atau Jira. 
+Mampu mengidentifikasi karakteristik tim 
+berkinerja tinggi dan menerapkan praktik 
+Agile untuk membangun kepercayaan, 
+kolaborasi, dan komunikasi efektif dalam 
+tim proyek. 
+Mampu menyusun Product Backlog yang 
+valid, melakukan grooming, dan 
+merencanakan sprint secara terstruktur 
+menggunakan tools digital dalam konteks 
+simulasi proyek Agile. 
+Mampu mendemonstrasikan penerapan 
+seluruh aspek metodologi Agile — meliputi 
+user stories, sprint review, retrospektif, dan 
+dokumentasi terpadu — dalam proyek 
+aplikasi/website hingga presentasi akhir 
+semester. 
+4. Proyek Inovasi Agile CPL-3 
+Mampu mengimplementasikan, 
+mengintegrasikan, dan melakukan 
+deployment aplikasi perangkat lunak 
+menggunakan paradigma pemrograman 
+yang sesuai serta menerapkan praktik 
+rekayasa yang baik meliputi version control, 
+CI/CD, dan pengelolaan dependensi dalam 
+lingkungan pengembangan kolaboratif. 
+CPL-8 
+Mampu bekerja secara efektif dalam tim 
+multidisiplin, berkomunikasi secara 
+profesional dalam konteks teknis dan bisnis, 
+serta merencanakan dan mengelola proyek 
+perangkat lunak menggunakan metodologi 
+agile dan prinsip manajemen proyek yang 
+relevan. 
+CPL-10 
+Mampu menganalisis peluang bisnis 
+teknologi, menyusun model dan rencana 
+bisnis berbasis kebutuhan pasar, merancang 
+strategi pengembangan usaha digital yang 
+layak secara ekonomi dan patuh terhadap 
+regulasi, serta mengomunikasikan nilai 
+produk teknologi kepada pemangku 
+kepentingan. 
+Mampu menerapkan kerangka kerja Scrum 
+secara langsung dalam proyek inovasi nyata 
+— termasuk perencanaan sprint, 
+pelaksanaan sprint, pengelolaan Product 
+Backlog, dan Sprint Backlog — dalam 
+lingkungan proyek yang dinamis. 
+Mampu memfasilitasi seluruh acara Scrum 
+dan menggunakan tools manajemen proyek 
+digital (Kanban, Trello, Jira) untuk 
+merencanakan, melacak, dan 
+memvisualisasikan alur kerja serta 
+kemajuan sprint secara efektif. 
+Mampu melakukan adaptasi dan 
+penyempurnaan proses Scrum berdasarkan 
+feedback retrospektif sprint untuk 
+meningkatkan efisiensi tim dan kualitas 
+produk secara berkelanjutan. 
+ 
+12. Komunikasi antara Manajer Proyek dan Klien 
+Fase/Proses Pertanyaan/Komentar Jawaban Catatan 
+Planning Pembentukan grup dan 
+koordinasi awal dengan Manpro. 
+Kelompok dibentuk dan mulai 
+melakukan koordinasi dengan 
+Manpro terkait proyek PBL. 
+Koordinasi awal 
+proyek. 
+Planning 
+(Rabu, 9 
+September 2026) 
+Pembahasan judul dan konsep 
+awal proyek. Manpro 
+memberikan masukan terkait 
+fitur. 
+Manpro menyarankan 
+penambahan fitur pengingat 
+untuk setiap kegiatan 
+pengguna agar fungsi aplikasi 
+lebih mendukung aktivitas 
+sehari-hari. 
+Masukan digunakan 
+sebagai pertimbangan 
+dalam pengembangan 
+fitur LifeSync. 
+Sprint 1 
+(Rabu, 23 
+September 2026) 
+Pembahasan RPP dan wireframe. 
+Manpro memberikan komentar 
+terkait biaya yang dicantumkan 
+dalam RPP. 
+Biaya perlu disesuaikan 
+dengan kebutuhan proyek dan 
+komponen yang benar-benar 
+digunakan. Bagian lainnya 
+sudah sesuai. 
+Melakukan 
+penyesuaian pada 
+bagian biaya sesuai 
+kebutuhan proyek. 
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+Fase/Proses Pertanyaan/Komentar Jawaban Catatan 
+- - - - 
+… … … … 
+ 
+13. Monitoring dan Evaluasi  
+Dalam pelaksanaan proyek PBL, setiap minggunya setiap kelompok harus melaporkan progress pengerjaan 
+proyek. Monitoring setiap kelompok dilakukan dengan melakukan pengisian logbook yang ada di 
+https://pbl.polibatam.ac.id.   
+Proses penilaian dilakukan oleh manajer proyek dan dosen pengajar matakuliah. Penilaian dilakukan mulai 
+dari awal pengerjaan proyek sampai akhir proyek. Komponen penilaian meliputi: 
+ 
+ 
+ 
+14. Riwayat Perubahan Proyek yang akan ditangani 
+No. Revisi/tanggal Deskripsi Perubahan Originator 
+   
+   
+   
+   
+… … … 
+ 
+  
+
+ 
+No.FO.8.6.1-V0 Format Rencana Pelaksanaan Proyek (RPP)  
+3 November 2023 
+ 
+   
+Tanda Tangan Persetujuan 
+Batam, DD/09/2026 
+ 
+ 
+ 
+ 
+      Ummul Fitri Afifah 
+Klien  P3M  SHILAU  Manajer Proyek 
+ 
+ 
+ 
+ 
+Ahmad Hamim T          Supardianto 
+Kajur IF  Kajur ____  KPS TRPL  KPS ______ 
+ 
+ 

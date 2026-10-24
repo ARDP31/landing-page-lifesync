@@ -1,0 +1,205 @@
+/* ============================================================
+   LifeSync - Product Profile Website
+   Custom CSS: navigasi, animasi, layer dekoratif, reveal on scroll
+   ============================================================
+   Catatan: Palet warna TIDAK didefinisikan di sini.
+   Semua warna brand (brand-*, accent-*, ink-*) memakai
+   konfigurasi `tailwind.config` pada index.html agar konsisten.
+   ============================================================ */
+
+/* ---------------------------------------------------------
+   1. Base
+   --------------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system,
+                 BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+::selection {
+    background-color: #00B368;
+    color: #ffffff;
+}
+
+/* Offset anchor agar judul section tidak tertutup navbar fixed */
+section[id] {
+    scroll-margin-top: 5.5rem;
+}
+
+@media (min-width: 1024px) {
+    section[id] {
+        scroll-margin-top: 7.5rem;
+    }
+}
+
+/* ---------------------------------------------------------
+   2. Navigasi desktop
+   --------------------------------------------------------- */
+.nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6B8077;
+    transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.15rem;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: #00B368;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: #009153;
+    background-color: rgba(0, 179, 104, 0.08);
+    outline: none;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.is-active::after {
+    transform: scaleX(1);
+}
+
+.nav-link.is-active {
+    color: #009153;
+}
+
+/* ---------------------------------------------------------
+   3. Menu mobile
+   --------------------------------------------------------- */
+.mobile-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1E2D27;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.mobile-link:hover,
+.mobile-link:focus-visible {
+    background-color: rgba(0, 179, 104, 0.08);
+    color: #009153;
+    padding-left: 1.15rem;
+    outline: none;
+}
+
+.mobile-link::after {
+    content: '\f105';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: #9AA8A1;
+}
+
+/* ---------------------------------------------------------
+   4. State navbar saat di-scroll
+   --------------------------------------------------------- */
+#navbar-bar {
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+#navbar.is-scrolled #navbar-bar {
+    background-color: rgba(255, 255, 255, 0.92);
+    border-bottom-color: #EDF1EF;
+    box-shadow: 0 12px 34px -22px rgba(30, 45, 39, 0.45);
+}
+
+/* ---------------------------------------------------------
+   5. Layer dekoratif
+   --------------------------------------------------------- */
+.hero-grid {
+    background-image:
+        linear-gradient(to right, rgba(0, 179, 104, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 179, 104, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 40%, transparent 100%);
+}
+
+/* ---------------------------------------------------------
+   6. Animasi
+   --------------------------------------------------------- */
+@keyframes lifesync-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+}
+
+@keyframes lifesync-float-slow {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+.animate-float {
+    animation: lifesync-float 5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+    animation: lifesync-float-slow 6.5s ease-in-out infinite;
+}
+
+/* Reveal on scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+/* ---------------------------------------------------------
+   7. Aksesibilitas - reduced motion
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+

@@ -1,0 +1,9 @@
+# Test artifacts
+tools/screenshots/
+tools/browser-test-result.txt
+tools/.chrome-profile/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

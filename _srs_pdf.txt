@@ -1,0 +1,510 @@
+ 
+1 
+SOFTWARE REQUIREMENT SPECIFICATIONS (SRS) 
+APLIKASI PERPAJAKAN BAGI STARTUP 
+Berbasis cloud mengikuti PP 46 Tahun 2013 
+BAB I PENDAHULUAN 
+Tujuan 
+Menjelaskan tujuan utama dari dokumen SRS ini, yakni memberikan panduan yang jelas untuk pengembangan 
+perangkat lunak. 
+Dokumen Software Requirement Specification (SRS) ini bertujuan untuk mendefinisikan kebutuhan 
+perangkat lunak pada aplikasi LifeSync — Daily Habit Tracker & Assistance sebagai acuan dalam proses 
+perancangan, pengembangan, pengujian, dan evaluasi sistem. 
+Pengguna umumnya mengelola berbagai aktivitas pribadi seperti tugas, jadwal, catatan, 
+pengeluaran, pola makan, dan momen harian menggunakan aplikasi yang berbeda. Kondisi tersebut 
+membuat data antar aktivitas tidak saling terhubung sehingga hubungan antar data yang sebenarnya 
+relevan sulit dimanfaatkan. 
+LifeSync dikembangkan sebagai aplikasi manajemen kehidupan pribadi yang mengintegrasikan 
+berbagai aktivitas tersebut dalam satu platform. Pengguna dapat mencatat tugas, event, notes, keuangan, 
+nutrisi, dan journaling. Data tersebut kemudian dapat digunakan  untuk menghasilkan insight dan saran 
+yang relevan melalui fitur Assistance dengan pendekatan: 
+Pengelolaan data (Tradisional) 
+ 
+Pengelolaan data (Terpadu dengan LifeSync) 
+ 
+Ruang Lingkup 
+Mencakup batasan atau area aplikasi perangkat lunak yang akan dikembangkan, yaitu fitur-fitur yang akan dikerjakan 
+dan tidak dikerjakan.  
+LifeSync merupakan aplikasi manajemen kehidupan pribadi yang dikembangkan menggunakan Flutter 
+dan dapat digunakan pada perangkat mobile. Sistem mencakup pengelolaan aktivitas pribadi, pencatatan 
+data, sinkronisasi data, layanan AI, serta fitur Premium. 
+Ruang lingkup sistem meliputi: 
+1. Sistem mampu menyediakan registrasi dan login pengguna.  
+2. Sistem mampu menyediakan pengelolaan profil pribadi.  
+3. Sistem mampu menyediakan pengelolaan Todo.  
+ 
+2 
+4. Sistem mampu menyediakan pengelolaan event melalui kalender visual.  
+5. Sistem mampu menyediakan pengelolaan Notes.  
+6. Sistem mampu menyediakan pencatatan dan pemantauan keuangan pribadi.  
+7. Sistem mampu menyediakan pemindaian kandungan nutrisi dari gambar makanan.  
+8. Sistem mampu menyediakan pencatatan dan pemantauan nutrisi.  
+9. Sistem mampu menyediakan journaling dengan riwayat berbasis lokasi.  
+10. Sistem mampu menyediakan layanan Premium berbasis subscription bulanan.  
+11. Sistem mampu menyediakan financial insight untuk pengguna Premium.  
+12. Sistem mampu menyediakan personalized notification untuk pengguna Premium.  
+13. Sistem mampu bekerja secara offline menggunakan SQLite.  
+14. Sistem mampu melakukan sinkronisasi data ke cloud untuk pengguna yang memiliki akses 
+Premium.  
+15. Sistem mampu menyediakan dashboard admin untuk pengelolaan aplikasi.  
+Definisi, Istilah, dan Singkatan 
+Berisi istilah atau singkatan yang digunakan dalam dokumen untuk memberikan kejelasan istilah teknis. 
+1. SRS : Software Requirement Specification 
+2. LifeSync : Aplikasi Daily Habit Tracker & Assistance 
+3. Free : Tipe akun dengan akses fitur lokal dasar 
+4. Premium : Tipe akun dengan akses layanan cloud dan fitur Premium 
+5. SQLite : Database lokal pada perangkat 
+6. API : Application Programming Interface 
+7. REST API : Arsitektur komunikasi antara client dan server 
+8. AI : Artificial Intelligence 
+9. FCM : Firebase Cloud Messaging 
+10. CRUD : Create, Read, Update, Delete 
+11. UUID : Universally Unique Identifier 
+12. Offline-first : Pendekatan aplikasi yang mengutamakan penggunaan data lokal 
+sebelum sinkronisasi online 
+13. Sync : Proses menyamakan data lokal dengan data cloud 
+14.  :  
+15.  :  
+ 
+Referensi 
+Daftar dokumen atau sumber lain yang menjadi rujukan dalam penyusunan SRS. 
+1. Standar IEEE nomor ANSI / IEEE Std 1058.1-1987 (reaffirmed 1993), 9 Februari 2015 
+• Peraturan Pemerintah No 46 Tahun 2013. 
+ 
+ 
+ 
+3 
+Gambaran Umum Dokumen 
+Memberikan panduan tentang struktur dokumen secara keseluruhan. 
+Penulisan dokumen ini dibagi menjadi beberapa bab sebagai berikut: 
+Bab 1 : menjelaskan mengenai tujuan perangkat lunak, ruang lingkup, daftar definisi, istilah, dan 
+singkatan, referensi serta gambaran umum dokumen.  
+Bab 2 : berisi tentang gambaran umum mengenai perspektif produk, manfaat produk, karakteristik user, 
+batasan, asumsi, dan ketergantungan yang digunakan.  
+Bab 3 : menyediakan kebutuhan fungsional, kebutuhan non fungsional, lingkungan operasi, dan batasan 
+perancangan. 
+Bab 4 : menyediakan spesifikasi kebutuhan antarmuka, terkait protipe antar muka yang akan digunakan, 
+dan juga terkait hubungan dengan perangkat keras dan perangkat lunak lain nya. 
+BAB II DESKRIPSI UMUM 
+Perspektif Produk 
+Menjelaskan bagaimana produk tersebut akan digunakan dan berhubungan dengan sistem lain. 
+LifeSync merupakan aplikasi mobile yang menerapkan arsitektur offline-first. Pada kondisi offline, 
+aplikasi menggunakan SQLite sebagai database lokal sehingga pengguna tetap dapat menggunakan fitur 
+utama seperti Todo, Calendar, Notes, Finance, Nutrition, d an Journaling. Pada kondisi online, pengguna 
+Premium dapat melakukan sinkronisasi data lokal dengan server melalui REST API Laravel. 
+Arsitektur sistem secara umum: 
+Fitur Produk 
+Daftar fitur utama dari perangkat lunak yang akan dikembangkan. 
+Berikut adalah fitur-fitur utama yang akan dikembangkan dalam aplikasi ini: 
+1. MF-1 : Sistem menyediakan layanan registrasi dalam aplikasi. 
+2. MF-2 : Sistem menyediakan layanan autentikasi login bagi pengguna. 
+3. MF-3 : Sistem menyediakan layanan pengelolaan profil pribadi pengguna. 
+4. MF-4 : Sistem menyediakan layanan pengelolaan daftar tugas (todo). 
+5. MF-5 : Sistem menyediakan layanan pengelolaan event dalam bentuk visual kalender. 
+6. MF-6 : Sistem menyediakan layanan pengelolaan catatan (notes). 
+7. MF-7 : Sistem menyediakan layanan pencatatan dan pemantauan keuangan pribadi. 
+8. MF-8 : Sistem menyediakan layanan pemindaian kandungan nutrisi dari gambar makanan. 
+ 
+4 
+9. MF-9 : Sistem menyediakan layanan pencatatan dan pemantauan nutrisi pribadi. 
+10. MF-10 : Sistem menyediakan layanan journaling dengan riwayat yang divisualisasikan dalam 
+peta. 
+11. MF-11 : Sistem menyediakan layanan peningkatan tipe akun menjadi premium melalui 
+berlangganan bulanan. 
+12. MF-12 : Sistem menyediakan layanan insight dari catatan keuangan bagi pengguna premium. 
+13. MF-13 : Sistem menyediakan layanan notifikasi yang dipersonalisasi bagi pengguna 
+premium. 
+14. MF-14 : Sistem menyediakan layanan logout bagi pengguna. 
+15. MF-15 : Sistem menyediakan layanan penghapusan akun beserta seluruh data terkait. 
+16. MF-16 : Sistem menyediakan layanan autentikasi login untuk admin pada dashboard admin. 
+17. MF-17 : Sistem menyediakan layanan statistik penggunaan aplikasi bagi admin. 
+18. MF-18 : Sistem menyediakan layanan pengaturan dan pengelolaan langganan premium bagi 
+admin. 
+19. MF-19 : Sistem menyediakan layanan broadcast notifikasi kepada pengguna bagi admin. 
+20. MF-20 : Sistem menyediakan layanan moderasi dan penangguhan akun pengguna bagi 
+admin. 
+Manfaat Produk 
+Menyebutkan manfaat dari produk yang diharapkan baik dari segi fungsional maupun bisnis. 
+Manfaat yang didapat apabila menggunakan sistem ini antara lain adalah: 
+1. Mengintegrasikan berbagai modul manajemen diri dalam satu platform sehingga menghemat waktu dan 
+mempermudah pemantauan harian.  
+2. Membantu pengguna membangun kebiasaan positif dan mengelola kesehatan dasar secara teratur. 
+3. Memberikan pengingat dan wawasan ( insight) cerdas secara personal berdasarkan pola aktivitas harian 
+pengguna.  
+4. Memudahkan pendokumentasian riwayat momen berharga berbasis lokasi melalui fitur Memento. 
+ 
+Karakteristik Pengguna 
+Menjelaskan siapa pengguna sistem ini, termasuk tingkat pengetahuan dan keterampilan yang dibutuhkan. 
+Dalam aplikasi ini, pengguna yang terlibat adalah: 
+1. Pengguna Biasa (Free Account). 
+Pengguna yang memanfaatkan fitur dasar secara lokal (pencatatan tugas, kebiasaan, catatan, dan 
+keuangan) serta menerima notifikasi lokal standar. 
+2. Pengguna Premium (Premium Account). 
+Pengguna yang mendapatkan akses penuh ke penyimpanan cloud, fitur Assistance AI Agent, pengingat 
+kontekstual lanjutan, serta analisis lintas modul (Correlation Engine). 
+ 
+5 
+Batasan-batasan 
+Berisi pembatasan terkait produk, misalnya teknologi yang akan digunakan atau peraturan yang harus diikuti. 
+1. Fitur AI Agent dan analisis insight terintegrasi hanya aktif ketika perangkat terhubung dengan koneksi 
+internet dan pengguna berstatus Premium. 
+2. Pengoperasian mode Offline terbatas pada akses data lokal (SQLite) tanpa panggilan ke API eksternal . 
+3. Penangkapan titik lokasi pada Memento bergantung pada metadata yang ada pada foto yang 
+ditambahkan. 
+4. Kapasitas kuota pemanggilan AI Agent dibatasi sesuai plan subscription premium yang diambil 
+pengguna. 
+Asumsi dan Ketergantungan 
+Menjelaskan asumsi yang digunakan selama pengembangan serta ketergantungan pada faktor eksternal. 
+1. Pengguna memiliki perangkat smartphone (Android/iOS) yang mendukung aplikasi Flutter. 
+2. Server backend berbasis Laravel terintegrasi dengan baik pada cloud hosting/VPS. 
+3. Layanan Gemini API beroperasi normal untuk memproses permintaan respon AI Agent. 
+ 
+ 
+6 
+BAB III KEBUTUHAN SPESIFIK 
+Kebutuhan Fungsional 
+Menyebutkan kebutuhan yang berkaitan langsung dengan fitur dan fungsi dari perangkat lunak. 
+Kebutuhan fungsional sistem ini terdiri atas beberapa fungsi utama yang saling berhubungan dan 
+mendukung satu sama lain, yang meliputi fungsi-fungsi sebagai berikut: 
+1. Pendaftaran dan Autentikasi Pengguna. 
+Sistem mampu merekam data akun pengguna (email & password) serta memverifikasi status akun 
+(Free/Premium).  
+2. Pencatatan Tugas dan Jadwal (Planner). 
+Sistem mampu menyediakan fungsi CRUD tugas, mengatur tenggat waktu, serta memicu local notification. 
+3. Pelacakan Kebiasaan (Habit Tracker). 
+Sistem mampu merekam pencapaian kebiasaan harian dan menampilkan progres ketercapaian. 
+4. Note dan todo list dan memento 
+Pembuatan Memento (Photo Journal): Sistem mampu mengunggah foto jurnal dan secara otomatis 
+menangkap koordinat lokasi pengguna (GPS Tagging). 
+5. Pencatatan Keuangan. 
+Sistem mampu menginput log transaksi keuangan harian pengguna. 
+6. Pemrosesan AI Agent & Insight. 
+Sistem mampu mengirimkan perintah ke Gemini API untuk menghasilkan rekomendasi dan pengingat 
+kontekstual. 
+7. Pengaturan Smart Notification. 
+Sistem mampu membedakan pengiriman pengingat lokal (offline) dan push notification (online).. 
+Kebutuhan Non Fungsional 
+Meliputi aspek non-teknis seperti performa, keamanan, dan keandalan. 
+Dalam sistem ini, kebutuhan yang mendukung kelancaran fungsi-fungsi utama dapat didefinisikan pada 
+Tabel 1. 
+Tabel 1. Kebutuhan Non Fungsional 
+Parameter Requirement 
+Availability Sistem backend cloud mampu berjalan 24 jam non-stop, kecuali saat 
+perawatan/pembaruan sistem. 
+ 
+7 
+Reliability Toleransi kegagalan sistem maksimal 5%. Terhadap kendala rate-limit 
+AI, sistem menyediakan fallback ke logika rule-based. 
+Ergonomy Antarmuka intuitif, mudah digunakan (user friendly), serta konsisten 
+sesuai standar desain mobile. 
+Portability Aplikasi dapat diakses dan berjalan dengan baik pada platform Android 
+dan  (Flutter). 
+Safety Pengiriman data menggunakan protokol terenkripsi (HTTPS/SSL). Kata 
+sandi akun disimpan dalam bentuk hash terenkripsi di server. 
+Security Data privasi lokasi (GPS) hanya disimpan secara internal dan tidak 
+dipublikasikan. 
+Bahasa Menggunakan bahasa indonesia dan bahasa inggris 
+Kebutuhan Antar Muka 
+Menjelaskan antarmuka yang perlu disediakan baik untuk pengguna maupun untuk sistem lain. 
+Kebutuhan antarmuka dalam program ini antara lain adalah kebutuhan perangkat keras berupa Personal 
+Computer (PC) berupa Central Processing Unit (CPU), mouse, keyboard, monitor, dimana perangkat PC 
+harus terhubung dengan jaringan intranet dan internet, sehingga membutuhkan Local Area Network (LAN) 
+Card. Sedangkan untuk kebutuhan perangkat lunak yang harus disediakan adalah berupa sebuah web 
+browser seperti Internet Explorer, Mozilla Firefox, dan sebagainya untuk menjalankan aplikasi berbasis 
+web. 
+User story 
+Daftar user story yang menggambarkan bagaimana pengguna berinteraksi dengan sistem. 
+Fungsional Fitur MF1 
+User Story :  Sebagai pengguna atau pemilik startup, saya ingin dapat menggunakan aplikasi 
+ini, jadi saya akan melakukan registrasi pada aplikasi. 
+Kriteria penerimaan : Pengguna harus melengkapi semua inputan yang diperlukan pada saat registrasi. 
+Informasi dari registrasi akan disimpan kedalam database. 
+Pengguna yang telah berhasil registrasi dalam login untuk masuk kedalam aplikasi. 
+ 
+Fungsional Fitur MF2 
+ 
+8 
+User Story :  Sebagai pemilik startup, saya ingin dapat melakukan perekaman transaksi usaha, 
+jadi saya dapat melihat kembali rekaman transaksi saya. 
+Kriteria penerimaan :  Pengguna harus menyelesaikan dan melengkapi inputan pada halaman rekaman 
+transaksi. 
+   Seluruh rekaman transaksi akan tersimpan kedalam database. 
+   Pengguna dapat melihat rekaman transaksi pada halaman tersedia. 
+ 
+Fungsional Fitur MF3 
+User Story :  Sebagai pemilik startup, saya ingin dapat melihat e -faktur bulanan yang sudah 
+direkam sebelumnya. 
+Kriteria penerimaan :  Pengguna harus menyelesaikan rekaman transaksi terlebih dahulu. 
+Informasi yang dibutuhkan berupa rangkuman dari e-faktur pada bulan tertentu. 
+ 
+Fungsional Fitur MF4 
+User Story :  Sebagai pemilik startup, saya ingin perhitungan pajak PPh Final dapat secara 
+otomatis tanpa perlu saya hitung, jadi saya bisa mendapatkan hasilnya secara 
+langsung. 
+Kriteria penerimaan :  Pengguna sebelumnya harus menyelesaikan rekaman transaksi terlebih dahulu. 
+Informasi yang dibutuhkan akan tampil pada halaman terkait berupa jumlah Pajak final dari transaksi yang 
+sudah direkam. 
+ 
+ 
+ 
+ 
+ 
+Fungsional Fitur MF5 
+User Story :  Sebagai pemilik startup, saya ingin mendapatkan dokumen atau lampiran, jadi 
+dokumen atau lampiran bisa saya gunakan sebagai dokumen pada saat laporan 
+SPT Tahunan. 
+Kriteria penerimaan :  Pengguna sebelumnya harus menyelesaikan rekaman transaksi terlebih dahulu. 
+Informasi yang dibutuhkan akan tampil pada halaman terkait, kemudian dapat diunduh dalam format PDF. 
+ 
+Fungsional Fitur MF6 
+User Story :  Sebagai pemilik startup, saya ingin mendapatkan ringkasan transaksi dll, yang 
+dikirim secara reguler ke email saya, sebagai bentuk laporan. 
+ 
+9 
+Kriteria penerimaan :  Pengguna sebelumnya harus menyelesaikan rekaman transaksi terlebih dahulu. 
+Informasi yang dibutuhkan selanjutnya akan dikirim ke email pemilik secara 
+berkala setiap bulan. 
+Lingkungan Operasi 
+Menyebutkan lingkungan tempat produk akan beroperasi, misalnya platform atau perangkat keras yang digunakan. 
+Aplikasi ini akan berfungsi dengan spesifikasi seperti berikut: 
+1. Figma & draw.io: Perangkat lunak perancangan wireframe, UI/UX, dan pemodelan diagram sistem. 
+2. Flutter & Dart: Framework dan bahasa pemrograman utama pengembangan aplikasi mobile. 
+3. Laravel & PHP: Framework backend dan bahasa pemrograman server-side. 
+4. SQLite: Local database 
+5. Gemini API: Layanan kecerdasan buatan (AI Agent) eksternal. 
+6. Git & GitHub: Sistem version control. 
+7. FCM: Push notification 
+8. Riverpod: State management dan  dependency management 
+9. Relational Cloud Database: Penyimpanan cloud dan sinkronasi Premium 
+ 
+ 
+ 
+10 
+BAB IV EXTERNAL USER INTERFACES 
+User Interfaces 
+Penjelasan antarmuka yang akan digunakan oleh pengguna, termasuk desain dan elemen yang relevan. Dan selalu 
+menghubungkan rancangan antarmuka dengan Major Feature yang sudah disebutkan sebelumnya. 
+ 
+Gambar 3. Perancangan interface rekam transaksi 
+Perancangan tersebut menggunakan pola 2 kolom, pada kolom sebelah kanan yaitu berupa detail data 
+yang harus diinputkan. Data yang diinputkan berupa no faktur, tanggal faktur, jumlah, nama pembeli, 
+deskripsi.  
+Setelah ditambahkan maka akan masuk pada daftar faktur dikolom sebelah kiri, hal tersebut dikarenakan 
+memungkinkan bahwa pada satu faktur terdapat 2 jenis barang yang dibeli. Fitur yang terkait pada interface 
+ini adalah: 
+• MF-2 : Melayani pencatatan transaksi usaha 
+
+ 
+11 
+ 
+Gambar 4. Perancangan list rekam faktur transaksi 
+Perancangan desain pada interface ini adalah merupakan list atau daftar dari rekam -rekam faktur yang 
+sudah diinputkan pada proses sebelumnya. Halaman ini juga melakukan proses perhitungan pajak PPh 
+final 1%, yang dihitung melakukan total jumlah faktur yang  sudah direkam, lalu nilai dimunculkan berupa 
+jumlah pajak bulanan. 
+Selain hal tersebut, faktur yang sudah diinputkan juga bisa diubah atau dihapus, apabila ada kesalah 
+inputan atau ternyata tidak digunakan, maka faktur tersebut bisa diubah dan dihapus. Selain hal tersebut, 
+faktur juga dapat dicari untuk dapat dilihat detailnya. Fitur yang terkait pada interface ini adalah: 
+• MF-3 : Menyediakan fitur e-faktur bulanan 
+• MF-4 : Menghitung PPh Final Tahunan pada startup 
+ 
+
+ 
+12 
+ 
+Gambar 5. Perancangan list rekam faktur transaksi 
+Perancangan pada halaman ini ditujukan untuk melihat setoran pajak PPh final 1% tahunan badan yang 
+akan disetorkan. Pada halaman ini juga bisa melihat tahun pajak pada tahun-tahun sebelumnya. Aksi dari 
+halaman ini adalah pengguna dapat melakukan pembayaran sesuai dengan jumlah yang ditampilkan pada 
+halaman tersebut. 
+Fitur yang terkait pada interface ini adalah: 
+• MF-4 : Menghitung PPh Final Tahunan pada startup 
+
+ 
+13 
+ 
+Gambar 6. Perancangan dokumen hasil generate dari aplikasi 
+Perancangan halaman ini ditujukan pada pengguna yang ingin mendapat lampiran atau dokumen seperti 
+daftar peredaran jumlah bruto pada usaha tersebut. Dokumen tersebut nantinya akan digunakan sebagai 
+lampiran pada saat pengguna melaporkan SPT Tahunan badan.  
+Dokumen tersebut juga dapat menjadi bukti dari setiap transaksi yang sudah dilakukan oleh pengguna, 
+dan dapat ditunjukan apabila terjadi pemeriksaan secara mendadak.  Fitur yang terkait pada interface ini 
+adalah: 
+• MF-5 : Memberikan dokumen yang dapat diunduh sebagai lampiran 
+• MF-6 : Memberikan ringkasan transaksi usaha. 
+ 
+ 
+ 
+ 
+
+ 
+14 
+Hardware Interfaces 
+Kebutuhan antarmuka yang melibatkan perangkat keras. 
+Perangkat keras yang digunakan untuk mendukung aplikasi ini menggunakan layanan cloud dari google 
+yaitu Google Cloud Platform, yang menyediakan compute, storage, networking, big data, machine learning, 
+dan IoT. Perangkat keras yang digunakan berupa server dengan VPS yang disediakan oleh Google Cloud 
+Platform. Adapun spesifikasi sebagai berikut: 
+• Processor  : 4 vCPU 
+• Memory  : 8 GB 
+• Hardisk   : 500 GB 
+Software Interfaces 
+Kebutuhan terkait integrasi perangkat lunak dengan sistem atau software lain. 
+Adapun komponen-komponen yang digunakan pada desain interface di aplikasi ini adalah: 
+• Label  : Digunakan sebagai bagian untuk menampikan teks 
+• Textbox  : Digunakan untuk menempatkan inputan teks. 
+• Combobox : Digunakan sebagai bagian untuk memilih dari beberapa option pilihan 
+• Button  : Digunakan untuk mengaktifkan suatu event. 
+• Table  : Digunakan untuk menampilkan data dalam bentuk tabel. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+15 
+LAMPIRAN 1: BISNIS PROSES 
+Diagram atau deskripsi tentang proses bisnis yang terkait dengan penggunaan sistem. 
+Activity Diagram (current) : 
+Menghitung 
+Transaksi Usaha
+Membuat faktur 
+bulanan
+Menghitung Pajak Final 
+1% dari Omset Bulanan
+Membayar 
+Pajak Final 1%
+Menerima pembayaran 
+pajak dari wajib pajak
+PENGGUNA / STARTUP BANK DIRJEN PAJAK
+Menyusun SPT Tahun 
+Badan & Lampiran 
+Dokumen
+Memverifikasi Laporan 
+SPT Wajib Pajak Badan
+Melaporkan SPT 
+Tahunan Badan ke 
+DIRJEN Pajak
+Mengisi Formulir SSP 
+dan membayar kan ke 
+Bank
+Status SPT: Kurang Bayar
+Menerima Pembayaran 
+Kurang Bayar Wajib 
+pajak
+Melaporkan Bukti 
+Potong Terakhir dan 
+Koreksi Pembenaran
+Status SPT: Nihil atau Lebih Bayar
+ 
+Gambar 7. BPMN sebelum / yang sedang berlangsung 
+ 
+16 
+Activity Diagram (to be): 
+Menghitung 
+Transaksi Usaha
+Membuat faktur 
+bulanan
+Menghitung Pajak Final 
+1% dari Omset Bulanan
+Membayar 
+Pajak Final 1%
+Menerima pembayaran 
+pajak dari wajib pajak
+PENGGUNA / STARTUP BANK DIRJEN PAJAK
+Menyusun SPT Tahun 
+Badan & Lampiran 
+Dokumen
+Memverifikasi Laporan 
+SPT Wajib Pajak Badan
+Melaporkan SPT 
+Tahunan Badan ke 
+DIRJEN Pajak
+Mengisi Formulir SSP 
+dan membayar kan ke 
+Bank
+Status SPT: Kurang Bayar
+Menerima Pembayaran 
+Kurang Bayar Wajib 
+pajak
+Melaporkan Bukti 
+Potong Terakhir dan 
+Koreksi Pembenaran
+Status SPT: Nihil atau Lebih Bayar
+APLIKASI
+Menginputkan 
+Transaksi Usaha
+ 
+Gambar 8. BPMN sesudah / atau improvement yang akan dilakukan 
+ 
+ 
+17 
+LAMPIRAN 2: USECASE 
+Diagram usecase yang menggambarkan interaksi antara pengguna dan sistem. 
+merekam transaksi
+menghitung pajak PPh Final
+mendaftar
+me-generate lampiran / dokumen
+ 
+Gambar 1. Diagram usecase pada aplikasi 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+18 
+LAMPIRAN 3: DATA FLOW DIAGRAM 
+Diagram alir data yang menunjukkan bagaimana data bergerak di dalam sistem. 
+ 
+1. Proses 
+Pendaftaran
+pengguna
+2. Proses 
+Rekam Transaksi 
+Usaha
+data pengguna
+no_faktur,barang/jasa,
+jumlah, keterangan
+Nama, no_hp, sanditb_customer
+nama, 
+no_hp, 
+sandi
+tb_faktur
+3. Proses 
+perhitungan 
+pajak final 
+PPh Bulanan/
+Tahunan
+Data fakturTb_pajak_final
+Tahun_berjalan, 
+Jumlah_pajak
+4. Proses 
+Generate 
+dokumen / 
+lampiran
+Cust_id, total_harga 
+tgl_trans
+ 
+Gambar 2. Diagram Flow Diagram Aplikasi 
+ 
