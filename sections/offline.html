@@ -1,37 +1,71 @@
-<section id="offline" class="py-20 bg-slate-100">
+<!-- ============================================================
+      OFFLINE-FIRST ARCHITECTURE
+      Gojek-inspired: clean two-column layout
+      ============================================================ -->
+<section id="offline" class="py-20 bg-brand-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Konten kiri -->
             <div class="space-y-6">
-                <span class="bg-brand-100 text-brand-700 px-4 py-1.5 rounded-full text-xs font-bold inline-block">
+                <span class="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-700">
                     <i class="fa-solid fa-database mr-1"></i> Offline-First Architecture
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-                    Bekerja Optimal Tanpa Internet dengan SQLite
+                <h2 class="text-3xl sm:text-4xl font-black text-ink tracking-tight">
+                    Bekerja Optimal Tanpa Internet
                 </h2>
-                <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
-                    Aplikasi dirancang dengan pendekatan offline-first. Pada kondisi tanpa internet, aplikasi menggunakan SQLite sebagai database lokal sehingga seluruh fitur utama tetap dapat diakses. Sinkronisasi ke cloud otomatis berjalan saat online bagi pengguna Premium.
+                <p class="text-base text-ink-soft leading-relaxed">
+                    LifeSync dirancang dengan pendekatan offline-first. Pada kondisi tanpa internet, aplikasi menggunakan SQLite sebagai database lokal sehingga seluruh fitur utama tetap dapat diakses. Sinkronisasi ke cloud otomatis berjalan saat online bagi pengguna Premium.
                 </p>
+                <div class="mt-8 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center text-brand-600">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <span class="text-sm font-medium text-ink">Semua data tersimpan lokal di perangkat Anda</span>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center text-brand-600">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <span class="text-sm font-medium text-ink">Sinkron otomatis saat terhubung internet</span>
+                </div>
             </div>
-            <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-xl space-y-6">
-                <h3 class="text-xl font-bold border-b border-slate-800 pb-4">Tech Stack & Tools</h3>
-                <ul class="space-y-4 text-sm text-slate-300">
-                    <li class="flex items-center justify-between">
-                        <span><i class="fa-solid fa-mobile text-brand-400 mr-2"></i> Mobile Frontend</span>
-                        <span class="font-bold text-white">Flutter & Dart</span>
-                    </li>
-                    <li class="flex items-center justify-between">
-                        <span><i class="fa-solid fa-server text-brand-400 mr-2"></i> Backend Cloud</span>
-                        <span class="font-bold text-white">Laravel REST API</span>
-                    </li>
-                    <li class="flex items-center justify-between">
-                        <span><i class="fa-solid fa-database text-brand-400 mr-2"></i> Local Database</span>
-                        <span class="font-bold text-white">SQLite</span>
-                    </li>
-                    <li class="flex items-center justify-between">
-                        <span><i class="fa-solid fa-bell text-brand-400 mr-2"></i> Push Notification</span>
-                        <span class="font-bold text-white">Firebase Cloud Messaging (FCM)</span>
-                    </li>
-                </ul>
+
+            <!-- Showcase kanan -->
+            <div class="relative">
+                <div class="relative rounded-3xl bg-slate-900 p-8 shadow-2xl overflow-hidden border border-slate-800">
+                    <div class="absolute inset-0 -z-10 bg-brand-500/10 blur-[80px] rounded-full"></div>
+                    <h3 class="text-xl font-bold text-white mb-6">Tech Stack</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-mobile text-brand-400"></i>
+                                <span class="text-sm font-medium text-white">Mobile Frontend</span>
+                            </div>
+                            <span class="text-xs font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded">Flutter & Dart</span>
+                        </li>
+                        <li class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-server text-brand-400"></i>
+                                <span class="text-sm font-medium text-white">Backend Cloud</span>
+                            </div>
+                            <span class="text-xs font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded">Laravel REST API</span>
+                        </li>
+                        <li class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-database text-brand-400"></i>
+                                <span class="text-sm font-medium text-white">Local Database</span>
+                            </div>
+                            <span class="text-xs font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded">SQLite</span>
+                        </li>
+                        <li class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-bell text-brand-400"></i>
+                                <span class="text-sm font-medium text-white">Push Notification</span>
+                            </div>
+                            <span class="text-xs font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded">Firebase FCM</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

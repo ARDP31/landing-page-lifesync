@@ -182,30 +182,6 @@ section[id] {
 .reveal-delay-4 { transition-delay: 0.32s; }
 
 /* ---------------------------------------------------------
-   8. Ponsel interaktif (layar berganti saat fitur diklik)
-   --------------------------------------------------------- */
-#phone-frame {
-    transform-style: preserve-3d;
-    will-change: transform;
-}
-
-/* Efek tilt 3D saat kursor menggerakkan di atas ponsel */
-.phone-tilting {
-    transition: transform 0.1s ease-out;
-}
-
-/* Kartu fitur yang sedang ditampilkan di layar ponsel */
-.feature-card.is-active {
-    outline: 2px solid #00B368;
-    outline-offset: 2px;
-    border-color: #00B368;
-    background-color: #ECFDF5;
-}
-.feature-card.is-active i {
-    filter: drop-shadow(0 0 6px rgba(0, 179, 104, 0.6));
-}
-
-/* ---------------------------------------------------------
    7. Aksesibilitas - reduced motion
    --------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
