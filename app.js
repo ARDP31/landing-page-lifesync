@@ -41,6 +41,13 @@ const DOWNLOAD_SELECTOR = '[data-download]';
 const DOWNLOAD_ANDROID_SELECTOR = '[data-download-android]';
 const DOWNLOAD_IOS_SELECTOR = '[data-download-ios]';
 
+/**
+ * Endpoint Formspree untuk formulir kontak.
+ * Ganti YOUR_FORM_ID dengan Form ID yang didapat dari dashboard Formspree.
+ * Cara: buka https://formspree.io → buat form baru → salin endpoint-nya.
+ */
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE';
+
 const SECTIONS = [
     { id: 'section-header', file: 'sections/header.html' },
     { id: 'section-hero',   file: 'sections/hero.html' },
@@ -48,6 +55,7 @@ const SECTIONS = [
     { id: 'section-offline',file: 'sections/offline.html' },
     { id: 'section-ai',     file: 'sections/ai.html' },
     { id: 'section-pricing',file: 'sections/pricing.html' },
+    { id: 'section-kontak',file: 'sections/kontak.html' },
     { id: 'section-footer', file: 'sections/footer.html' },
 ];
 
@@ -90,6 +98,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     initReveal();
     initFeatureCards();
     initDownloadLinks();
+    initKontakForm();
     initSmoothScroll();
 });
 
@@ -338,3 +347,104 @@ function initFeatureCards() {
         });
     });
 }
+
+/* ==========================================================
+   7. Kontak Form: validasi & state sukses
+   ========================================================== */
+function initKontakForm() {
+    const form = document.getElementById('kontak-form');
+    if (!form) return;
+
+    const success = document.getElementById('kontak-success');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const nama    = document.getElementById('nama').value.trim();
+        const email   = document.getElementById('email').value.trim();
+        const subjek  = document.getElementById('subjek').value;
+        const pesan   = document.getElementById('pesan').value.trim();
+
+        let valid = true;
+
+        // Reset semua error
+        ['nama', 'email', 'subjek', 'pesan'].forEach((id) => {
+            document.getElementById('error-' + id).classList.add('hidden');
+        });
+
+        if (!nama) {
+            document.getElementById('error-nama').classList.remove('hidden');
+            valid = false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            document.getElementById('error-email').classList.remove('hidden');
+            valid = false;
+        }
+
+        if (!subjek) {
+            document.getElementById('error-subjek').classList.remove('hidden');
+            valid = false;
+        }
+
+        if (!pesan) {
+            document.getElementById('error-pesan').classList.remove('hidden');
+            valid = false;
+        }
+
+        if (!valid) return;
+
+        // Kirim data ke Formspree
+        const btn      = document.getElementById('btn-kirim');
+        const btnText  = document.getElementById('btn-text');
+        const btnIcon  = document.getElementById('btn-icon');
+
+        btn.disabled = true;
+        btnText.textContent = 'Mengirim...';
+        btnIcon.className = 'fa-solid fa-circle-notch fa-spin';
+
+        const formData = new FormData(form);
+
+        fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                Accept: 'application/json'
+            }
+        })
+        .then((response) => {
+            if (response.ok) {
+                form.reset();
+                form.classList.add('hidden');
+                success.classList.remove('hidden');
+            } else {
+                throw new Error('Gagal mengirim pesan');
+            }
+        })
+        .catch((error) => {
+            alert('Gagal mengirim pesan. Coba lagi nanti atau hubungi kami melalui email langsung.');
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btnText.textContent = 'Kirim Pesan';
+            btnIcon.className = 'fa-solid fa-paper-plane';
+        });
+    });
+}
+
+window.resetKontakForm = function resetKontakForm() {
+    const form   = document.getElementById('kontak-form');
+    const success = document.getElementById('kontak-success');
+
+    if (form) {
+        form.reset();
+        form.classList.remove('hidden');
+    }
+    if (success) success.classList.add('hidden');
+
+    ['nama', 'email', 'subjek', 'pesan'].forEach((id) => {
+        const el = document.getElementById('error-' + id);
+        if (el) el.classList.add('hidden');
+    });
+};
