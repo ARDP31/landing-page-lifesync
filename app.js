@@ -43,20 +43,20 @@ const DOWNLOAD_IOS_SELECTOR = '[data-download-ios]';
 
 /**
  * Endpoint Formspree untuk formulir kontak.
- * Ganti YOUR_FORM_ID dengan Form ID yang didapat dari dashboard Formspree.
- * Cara: buka https://formspree.io → buat form baru → salin endpoint-nya.
+ * Ganti YOUR_FORM_ID dengan Form ID dari dashboard Formspree:
+ * https://formspree.io -> buat form baru -> salin endpoint-nya.
  */
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID_HERE';
 
 const SECTIONS = [
-    { id: 'section-header', file: 'sections/header.html' },
-    { id: 'section-hero',   file: 'sections/hero.html' },
-    { id: 'section-fitur',  file: 'sections/fitur.html' },
-    { id: 'section-offline',file: 'sections/offline.html' },
-    { id: 'section-ai',     file: 'sections/ai.html' },
-    { id: 'section-pricing',file: 'sections/pricing.html' },
-    { id: 'section-kontak',file: 'sections/kontak.html' },
-    { id: 'section-footer', file: 'sections/footer.html' },
+    { id: 'section-header',  file: 'sections/header.html' },
+    { id: 'section-hero',    file: 'sections/hero.html' },
+    { id: 'section-fitur',   file: 'sections/fitur.html' },
+    { id: 'section-offline', file: 'sections/offline.html' },
+    { id: 'section-ai',      file: 'sections/ai.html' },
+    { id: 'section-pricing', file: 'sections/pricing.html' },
+    { id: 'section-kontak',  file: 'sections/kontak.html' },
+    { id: 'section-footer',  file: 'sections/footer.html' },
 ];
 
 /* ==========================================================
@@ -64,21 +64,30 @@ const SECTIONS = [
    ========================================================== */
 async function loadSection({ id, file }) {
     try {
-        const response = await fetch(file);
+        // Cache-buster query param agar browser tidak menyajikan cache lama yang rusak
+        const response = await fetch(file + '?v=' + Date.now());
         if (!response.ok) {
-            console.error(`Gagal memuat ${file} (HTTP ${response.status})`);
+            console.error('Gagal memuat ' + file + ' (HTTP ' + response.status + ')');
+            const container = document.getElementById(id);
+            if (container) {
+                container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-red-50 border border-red-200 rounded-2xl text-center text-red-700 text-sm font-medium">Gagal memuat section ' + file + ' (Status: ' + response.status + '). Pastikan file tersedia.</div>';
+            }
             return false;
         }
         const html = await response.text();
         const container = document.getElementById(id);
         if (!container) {
-            console.error(`Container #${id} tidak ditemukan`);
+            console.error('Container #' + id + ' tidak ditemukan');
             return false;
         }
         container.innerHTML = html;
         return true;
     } catch (error) {
-        console.error(`Error loading ${file}:`, error);
+        console.error('Error loading ' + file + ':', error);
+        const container = document.getElementById(id);
+        if (container) {
+            container.innerHTML = '<div class="max-w-xl mx-auto my-12 p-6 bg-amber-50 border border-amber-200 rounded-2xl text-center text-amber-800 text-sm font-medium"><p class="font-bold mb-1">Gagal memuat ' + file + '</p><p class="text-xs text-amber-700">Pastikan website dijalankan melalui local web server (seperti VS Code Live Server di port 5500/5501) dan bukan dibuka langsung via double-click file://.</p></div>';
+        }
         return false;
     }
 }
@@ -87,34 +96,61 @@ document.addEventListener('DOMContentLoaded', async function () {
     // 1) Muat semua section secara paralel
     const results = await Promise.all(SECTIONS.map(loadSection));
 
-    const failed = SECTIONS.filter((_, i) => !results[i]);
+    const failed = SECTIONS.filter(function (_, i) { return !results[i]; });
     if (failed.length) {
-        console.warn('Section gagal dimuat:', failed.map((s) => s.file).join(', '));
+        console.warn('Section gagal dimuat:', failed.map(function (s) { return s.file; }).join(', '));
     }
 
-    // 2) Baru setelah SEMUA section siap, inisialisasi interaksi.
-    //    Ini memastikan scroll spy menemukan seluruh target section.
-    initNavbar();
-    initReveal();
-    initFeatureCards();
-    initDownloadLinks();
-    initKontakForm();
-    initSmoothScroll();
+    // 2) Inisialisasi setiap interaksi dengan defensive programming (try-catch mandiri)
+    var modules = [
+        { name: 'Navbar', fn: initNavbar },
+        { name: 'Reveal Animations', fn: initReveal },
+        { name: 'Feature Cards', fn: initFeatureCards },
+        { name: 'Download Links', fn: initDownloadLinks },
+        { name: 'Kontak Form', fn: initKontakForm },
+        { name: 'Smooth Scroll', fn: initSmoothScroll }
+    ];
+
+    modules.forEach(function (mod) {
+        try {
+            mod.fn();
+        } catch (err) {
+            console.error('Gagal menginisialisasi modul ' + mod.name + ':', err);
+        }
+    });
+
+    // 3) Jika URL memiliki hash (#kontak, #pricing, dll.), scroll ulang dengan offset navbar setelah section ter-render
+    if (window.location.hash) {
+        setTimeout(function () {
+            try {
+                var target = document.querySelector(window.location.hash);
+                if (target) {
+                    var navbar = document.getElementById('navbar');
+                    var offset = navbar ? navbar.offsetHeight : 80;
+                    var top = target.getBoundingClientRect().top + window.scrollY - offset - 10;
+                    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+                }
+            } catch (e) {
+                // Ignore invalid selector
+            }
+        }, 150);
+    }
 });
 
 /* ==========================================================
    2. Navbar: mobile menu, sticky state, scroll spy
    ========================================================== */
 function initNavbar() {
-    const navbar    = document.getElementById('navbar');
-    const bar       = document.getElementById('navbar-bar');
-    const toggle    = document.getElementById('nav-toggle');
-    const icon      = document.getElementById('nav-toggle-icon');
-    const menu      = document.getElementById('nav-mobile-menu');
+    var navbar  = document.getElementById('navbar');
+    var bar     = document.getElementById('navbar-bar');
+    var toggle  = document.getElementById('nav-toggle');
+    var icon    = document.getElementById('nav-toggle-icon');
+    var menu    = document.getElementById('nav-mobile-menu');
+
     if (!navbar || !toggle || !menu) return;
 
     /* --- 2a. Buka / tutup menu mobile --- */
-    const setMenu = (open) => {
+    function setMenu(open) {
         menu.classList.toggle('hidden', !open);
         toggle.setAttribute('aria-expanded', String(open));
         toggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
@@ -122,333 +158,286 @@ function initNavbar() {
             icon.classList.toggle('fa-bars', !open);
             icon.classList.toggle('fa-xmark', open);
         }
-    };
+    }
 
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', function () {
         setMenu(menu.classList.contains('hidden'));
     });
 
     // Tutup menu ketika salah satu tautan diklik
-    menu.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener('click', () => setMenu(false));
+    menu.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function () { setMenu(false); });
     });
 
-    // Tutup menu saat klik di luar area header
-    document.addEventListener('click', (event) => {
-        if (!menu.classList.contains('hidden') && !navbar.contains(event.target)) {
-            setMenu(false);
+    // Tutup menu ketika klik di luar navbar
+    document.addEventListener('click', function (e) {
+        if (!navbar.contains(e.target)) setMenu(false);
+    });
+
+    /* --- 2b. Sticky navbar + background scroll --- */
+    var lastScroll = 0;
+
+    function onScroll() {
+        var y = window.scrollY;
+        var scrolled = y > 10;
+
+        if (scrolled) {
+            navbar.classList.add('bg-white/95', 'backdrop-blur-xl', 'shadow-sm');
+            navbar.classList.remove('bg-transparent');
+            if (bar) {
+                bar.classList.add('border-slate-100');
+                bar.classList.remove('border-transparent');
+            }
+        } else {
+            navbar.classList.remove('bg-white/95', 'backdrop-blur-xl', 'shadow-sm');
+            navbar.classList.add('bg-transparent');
+            if (bar) {
+                bar.classList.remove('border-slate-100');
+                bar.classList.add('border-transparent');
+            }
         }
-    });
 
-    // Tutup menu saat menekan tombol Escape
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && !menu.classList.contains('hidden')) {
-            setMenu(false);
-            toggle.focus();
-        }
-    });
+        lastScroll = y;
+        updateScrollSpy();
+    }
 
-    /* --- 2b. State sticky saat di-scroll --- */
-    const onScroll = () => {
-        navbar.classList.toggle('is-scrolled', window.scrollY > 12);
-    };
-    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // jalankan sekali saat mount
 
-    /* --- 2c. Scroll spy: tandai link section yang sedang aktif ---
-       Target section dimuat dinamis lewat fetch(), sehingga target
-       di-resolve ulang setiap kali daftar link berubah.              */
-    const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
-    let spy = null;
+    /* --- 2c. Scroll spy --- */
+    var navLinks = document.querySelectorAll('.nav-link');
 
-    const setActive = (id) => {
-        navLinks.forEach((link) => {
-            const active = link.getAttribute('href') === '#' + id;
-            link.classList.toggle('is-active', active);
-            if (active) {
-                link.setAttribute('aria-current', 'page');
-            } else {
-                link.removeAttribute('aria-current');
-            }
+    function updateScrollSpy() {
+        var sections = document.querySelectorAll('section[id], header[id]');
+        var scrollY = window.scrollY;
+        var current = '';
+
+        sections.forEach(function (sec) {
+            var top = sec.offsetTop - 120;
+            if (scrollY >= top) current = sec.id;
         });
-    };
 
-    const resolveTargets = () => {
-        return navLinks
-            .map((link) => document.getElementById(link.getAttribute('href').slice(1)))
-            .filter(Boolean);
-    };
-
-    const buildSpy = () => {
-        if (spy) {
-            spy.disconnect();
-            spy = null;
-        }
-
-        const targets = resolveTargets();
-        if (targets.length === 0) return;
-
-        spy = new IntersectionObserver((entries) => {
-            // Pilih entry yang paling atas viewport agar penandaan stabil
-            const visible = entries
-                .filter((entry) => entry.isIntersecting)
-                .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-            if (visible.length) {
-                setActive(visible[0].target.id);
-            }
-        }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-
-        targets.forEach((target) => spy.observe(target));
-    };
-
-    buildSpy();
-
-    // Bangun ulang spy bila section baru ditambahkan / berubah.
-    const observer = new MutationObserver(() => buildSpy());
-    observer.observe(document.body, { childList: true, subtree: true });
+        navLinks.forEach(function (link) {
+            var href = link.getAttribute('href');
+            var active = href === '#' + current;
+            link.classList.toggle('text-brand-600', active);
+            link.classList.toggle('font-bold', active);
+        });
+    }
 }
 
 /* ==========================================================
-   3. Tautan unduhan aplikasi
+   3. Smooth Scroll
+   ========================================================== */
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+            var hash = anchor.getAttribute('href');
+            if (hash === '#') return;
+
+            var target = document.querySelector(hash);
+            if (!target) return;
+
+            e.preventDefault();
+
+            var navbar = document.getElementById('navbar');
+            var offset = navbar ? navbar.offsetHeight : 72;
+
+            var top = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+    });
+}
+
+/* ==========================================================
+   4. Download Links
    ========================================================== */
 function initDownloadLinks() {
-    /* --- General download ([data-download]) --- */
-    const links = document.querySelectorAll(DOWNLOAD_SELECTOR);
-    if (links.length) {
-        links.forEach((link) => {
-            if (!STORE_URL) {
-                link.setAttribute('href', '#pricing');
-                link.setAttribute('data-store-placeholder', 'true');
-                link.title = 'Link toko resmi belum tersedia - menampilkan pilihan paket';
-                return;
-            }
+    var links = document.querySelectorAll(DOWNLOAD_SELECTOR);
+    links.forEach(function (link) {
+        if (STORE_URL) {
             link.setAttribute('href', STORE_URL);
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
-        });
-    }
-
-    /* --- Android download ([data-download-android]) --- */
-    const androidLinks = document.querySelectorAll(DOWNLOAD_ANDROID_SELECTOR);
-    if (androidLinks.length) {
-        androidLinks.forEach((link) => {
-            const url = ANDROID_STORE_URL || '#pricing';
-            link.setAttribute('href', url);
-            if (ANDROID_STORE_URL) {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            } else {
-                link.setAttribute('data-store-placeholder', 'true');
-                link.title = 'Link Google Play belum tersedia - menampilkan pilihan paket';
-            }
-        });
-    }
-
-    /* --- iOS download ([data-download-ios]) --- */
-    const iosLinks = document.querySelectorAll(DOWNLOAD_IOS_SELECTOR);
-    if (iosLinks.length) {
-        iosLinks.forEach((link) => {
-            const url = IOS_STORE_URL || '#pricing';
-            link.setAttribute('href', url);
-            if (IOS_STORE_URL) {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            } else {
-                link.setAttribute('data-store-placeholder', 'true');
-                link.title = 'Link App Store belum tersedia - menampilkan pilihan paket';
-            }
-        });
-    }
-}
-
-/* ==========================================================
-   4. Smooth scroll dengan offset navbar fixed
-   ========================================================== */
-function initSmoothScroll() {
-    document.addEventListener('click', (event) => {
-        const link = event.target.closest('a[href^="#"]');
-        if (!link) return;
-
-        const hash = link.getAttribute('href');
-        if (!hash || hash === '#') return;
-
-        const target = document.getElementById(hash.slice(1));
-        if (!target) return;
-
-        event.preventDefault();
-
-        const navbar = document.getElementById('navbar');
-        const offset = navbar ? navbar.offsetHeight : 0;
-
-        const top = target.getBoundingClientRect().top + window.pageYOffset - offset - 8;
-        window.scrollTo({ top, behavior: 'smooth' });
-
-        // Perbarui hash tanpa memicu lompatan tambahan
-        if (history.replaceState) {
-            history.replaceState(null, '', hash);
+        } else {
+            link.setAttribute('href', '#pricing');
         }
+    });
 
-        // Fokuskan target agar navigasi keyboard tetap konsisten
-        target.setAttribute('tabindex', '-1');
-        target.focus({ preventScroll: true });
+    document.querySelectorAll(DOWNLOAD_ANDROID_SELECTOR).forEach(function (link) {
+        if (ANDROID_STORE_URL) {
+            link.setAttribute('href', ANDROID_STORE_URL);
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        } else {
+            link.setAttribute('href', '#pricing');
+        }
+    });
+
+    document.querySelectorAll(DOWNLOAD_IOS_SELECTOR).forEach(function (link) {
+        if (IOS_STORE_URL) {
+            link.setAttribute('href', IOS_STORE_URL);
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        } else {
+            link.setAttribute('href', '#pricing');
+        }
     });
 }
 
 /* ==========================================================
-   5. Reveal on scroll (elemen .reveal)
+   5. Reveal on Scroll
    ========================================================== */
 function initReveal() {
-    const items = document.querySelectorAll('.reveal');
+    var items = document.querySelectorAll('.reveal');
     if (items.length === 0) return;
 
-    if (!('IntersectionObserver' in window)) {
-        items.forEach((el) => el.classList.add('is-visible'));
-        return;
-    }
+    // Langsung buat elemen yang sudah berada di viewport atau saat dimuat menjadi terlihat
+    items.forEach(function (el) {
+        el.classList.add('is-visible');
+    });
 
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.05 });
 
-    items.forEach((el) => observer.observe(el));
+    items.forEach(function (el) { observer.observe(el); });
 }
-
 
 /* ==========================================================
    6. Interaksi kartu fitur (klik -> buka halaman detail)
    ========================================================== */
-
-// Mapping fitur ke halaman detail masing-masing
-const FEATURE_PAGE = {
-    todo: 'pages/fitur-todo.html',
+var FEATURE_PAGE = {
+    todo:     'pages/fitur-todo.html',
     calendar: 'pages/kalender.html',
     keuangan: 'pages/keuangan.html',
-    nutrisi: 'pages/nutrisi.html',
-    memento: 'pages/memento.html',
-    notes: 'pages/fitur-notes.html',
+    nutrisi:  'pages/nutrisi.html',
+    memento:  'pages/memento.html',
+    notes:    'pages/fitur-notes.html',
 };
 
 function initFeatureCards() {
-    const cards = document.querySelectorAll('.feature-card');
+    var cards = document.querySelectorAll('.feature-card');
     if (!cards.length) return;
 
-    cards.forEach((card) => {
-        card.addEventListener('click', () => {
-            const key = card.getAttribute('data-feature');
-            const page = FEATURE_PAGE[key];
-            if (page) {
-                window.location.href = page;
-            }
+    cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            var key  = card.getAttribute('data-feature');
+            var page = FEATURE_PAGE[key];
+            if (page) window.location.href = page;
         });
     });
 }
 
 /* ==========================================================
-   7. Kontak Form: validasi & state sukses
+   7. Kontak Form: validasi & Formspree submit
    ========================================================== */
 function initKontakForm() {
-    const form = document.getElementById('kontak-form');
+    var form = document.getElementById('kontak-form');
     if (!form) return;
 
-    const success = document.getElementById('kontak-success');
+    var successBox = document.getElementById('kontak-success');
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const nama    = document.getElementById('nama').value.trim();
-        const email   = document.getElementById('email').value.trim();
-        const subjek  = document.getElementById('subjek').value;
-        const pesan   = document.getElementById('pesan').value.trim();
+        var nama   = document.getElementById('nama').value.trim();
+        var email  = document.getElementById('email').value.trim();
+        var subjek = document.getElementById('subjek').value;
+        var pesan  = document.getElementById('pesan').value.trim();
 
-        let valid = true;
+        var valid = true;
 
-        // Reset semua error
-        ['nama', 'email', 'subjek', 'pesan'].forEach((id) => {
-            document.getElementById('error-' + id).classList.add('hidden');
+        // Reset semua pesan error
+        ['nama', 'email', 'subjek', 'pesan'].forEach(function (id) {
+            var el = document.getElementById('error-' + id);
+            if (el) el.classList.add('hidden');
         });
 
         if (!nama) {
-            document.getElementById('error-nama').classList.remove('hidden');
+            var el = document.getElementById('error-nama');
+            if (el) el.classList.remove('hidden');
             valid = false;
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
-            document.getElementById('error-email').classList.remove('hidden');
+            var el = document.getElementById('error-email');
+            if (el) el.classList.remove('hidden');
             valid = false;
         }
 
         if (!subjek) {
-            document.getElementById('error-subjek').classList.remove('hidden');
+            var el = document.getElementById('error-subjek');
+            if (el) el.classList.remove('hidden');
             valid = false;
         }
 
         if (!pesan) {
-            document.getElementById('error-pesan').classList.remove('hidden');
+            var el = document.getElementById('error-pesan');
+            if (el) el.classList.remove('hidden');
             valid = false;
         }
 
         if (!valid) return;
 
-        // Kirim data ke Formspree
-        const btn      = document.getElementById('btn-kirim');
-        const btnText  = document.getElementById('btn-text');
-        const btnIcon  = document.getElementById('btn-icon');
+        // State: loading
+        var btn     = document.getElementById('btn-kirim');
+        var btnText = document.getElementById('btn-text');
+        var btnIcon = document.getElementById('btn-icon');
 
-        btn.disabled = true;
-        btnText.textContent = 'Mengirim...';
-        btnIcon.className = 'fa-solid fa-circle-notch fa-spin';
+        if (btn) btn.disabled = true;
+        if (btnText) btnText.textContent = 'Mengirim...';
+        if (btnIcon) btnIcon.className = 'fa-solid fa-circle-notch fa-spin';
 
-        const formData = new FormData(form);
+        var formData = new FormData(form);
 
         fetch(FORMSPREE_ENDPOINT, {
             method: 'POST',
             body: formData,
-            headers: {
-                Accept: 'application/json'
-            }
+            headers: { Accept: 'application/json' }
         })
-        .then((response) => {
+        .then(function (response) {
             if (response.ok) {
                 form.reset();
-                form.classList.add('hidden');
-                success.classList.remove('hidden');
+                // Sembunyikan form, tampilkan pesan sukses
+                var wrapper = document.getElementById('kontak-form-wrapper');
+                if (wrapper) wrapper.classList.add('hidden');
+                if (successBox) successBox.classList.remove('hidden');
             } else {
                 throw new Error('Gagal mengirim pesan');
             }
         })
-        .catch((error) => {
-            alert('Gagal mengirim pesan. Coba lagi nanti atau hubungi kami melalui email langsung.');
+        .catch(function () {
+            alert('Gagal mengirim pesan. Coba lagi nanti atau hubungi kami melalui email langsung:\npbl507.bisnis@gmail.com');
         })
-        .finally(() => {
-            btn.disabled = false;
-            btnText.textContent = 'Kirim Pesan';
-            btnIcon.className = 'fa-solid fa-paper-plane';
+        .finally(function () {
+            if (btn) btn.disabled = false;
+            if (btnText) btnText.textContent = 'Kirim Pesan';
+            if (btnIcon) btnIcon.className = 'fa-solid fa-paper-plane';
         });
     });
 }
 
+/* Fungsi reset form kontak (dipanggil dari tombol "Kirim Pesan Lagi") */
 window.resetKontakForm = function resetKontakForm() {
-    const form   = document.getElementById('kontak-form');
-    const success = document.getElementById('kontak-success');
+    var form       = document.getElementById('kontak-form');
+    var wrapper    = document.getElementById('kontak-form-wrapper');
+    var successBox = document.getElementById('kontak-success');
 
-    if (form) {
-        form.reset();
-        form.classList.remove('hidden');
-    }
-    if (success) success.classList.add('hidden');
+    if (form) form.reset();
+    if (wrapper) wrapper.classList.remove('hidden');
+    if (successBox) successBox.classList.add('hidden');
 
-    ['nama', 'email', 'subjek', 'pesan'].forEach((id) => {
-        const el = document.getElementById('error-' + id);
+    ['nama', 'email', 'subjek', 'pesan'].forEach(function (id) {
+        var el = document.getElementById('error-' + id);
         if (el) el.classList.add('hidden');
     });
 };
-/ /  
- u p d a t e  
- k o n t a k  
- 
