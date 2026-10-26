@@ -448,3 +448,7 @@ window.resetKontakForm = function resetKontakForm() {
         if (el) el.classList.add('hidden');
     });
 };
+/ /  
+ u p d a t e  
+ k o n t a k  
+ 
