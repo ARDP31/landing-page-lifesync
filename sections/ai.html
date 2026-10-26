@@ -1,43 +1,69 @@
 ﻿<!-- ============================================================
       AI ASSISTANCE
-      Fitur lanjutan untuk akun Premium (belum terlaksana)
+      Pemindaian nutrisi makanan lewat foto dengan AI
       ============================================================ -->
 <section id="ai" class="py-20 bg-brand-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span class="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-1.5 text-xs font-bold text-brand-700">
-                <i class="fa-solid fa-robot mr-1"></i> AI Assistance
+                <i class="fa-solid fa-robot mr-1"></i> Food AI Assistant
             </span>
-            <h2 class="text-3xl sm:text-4xl font-black text-ink tracking-tight">Wawasan Cerdas dengan AI</h2>
+            <h2 class="text-3xl sm:text-4xl font-black text-ink tracking-tight">Pemindaian Nutrisi Cerdas dengan AI</h2>
             <p class="text-base text-ink-soft max-w-lg mx-auto leading-relaxed">
-                Fitur AI Assistant (analisis kebiasaan, financial insight, dan pengingat kontekstual) adalah fitur lanjutan untuk akun Premium dan sedang dalam tahap pengembangan. Segera hadir!
+                Hanya sekedar mengambil foto makanan, LifeSync otomatis mendeteksi kalori, protein, lemak, karbohidrat, dan kandungan gizi lainnya. Data nutrisi langsung tercatat ke riwayat kesehatan Anda — tanpa input manual yang merepotkan.
             </p>
         </div>
 
-        <!-- Coming Soon / Placeholder Card -->
-        <div class="flex justify-center">
-            <div class="w-full max-w-2xl p-8 rounded-3xl border-2 border-brand-200 bg-brand-50/50 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-brand-500"></div>
-                <div class="relative z-10 flex flex-col items-center text-center space-y-6">
-                    <div class="w-16 h-16 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 mb-4">
-                        <i class="fa-solid fa-robot text-3xl"></i>
+        <!-- AI Benefit Cards --><div class="grid md:grid-cols-3 gap-6 mb-16"><div class="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm reveal reveal-delay-1"><div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 mb-4"><i class="fa-solid fa-camera text-xl"></i></div><h3 class="text-lg font-bold text-ink mb-2">Deteksi Otomatis</h3><p class="text-sm text-ink-soft leading-relaxed">AI menganalisis foto makanan dan mengidentifikasi porsi serta kandungan gizi dalam hitungan detik.</p></div><div class="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm reveal reveal-delay-2"><div class="w-12 h-12 rounded-xl bg-accent-blue/10 flex items-center justify-center text-accent-blue mb-4"><i class="fa-solid fa-fire text-xl"></i></div><h3 class="text-lg font-bold text-ink mb-2">Kalori Akurat</h3><p class="text-sm text-ink-soft leading-relaxed">Perhitungan kalori dan makronutrien yang presisi berdasarkan database nutrisi terpercaya.</p></div><div class="p-8 rounded-3xl border border-slate-100 bg-white shadow-sm reveal reveal-delay-3"><div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-4"><i class="fa-solid fa-chart-line text-xl"></i></div><h3 class="text-lg font-bold text-ink mb-2">Riwayat Gizi</h3><p class="text-sm text-ink-soft leading-relaxed">Semua hasil pemindaian tersimpan dan dapat diakses kapan saja untuk memantau asupan harian.</p></div></div>
+
+        <!-- AI Showcase -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between p-4 rounded-2xl border border-brand-100 bg-white">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center text-brand-600"><i class="fa-solid fa-bowl-food"></i></div>
+                        <div><p class="text-sm font-bold text-ink">Salad Ayam Grill</p><p class="text-[10px] text-ink-soft">Terdeteksi via kamera</p></div>
                     </div>
-                    <h3 class="text-2xl font-black text-ink">Fitur Lanjutan — Segera Hadir</h3>
-                    <p class="text-lg text-ink-soft leading-relaxed">
-                        AI Assistant akan menganalisis data kebiasaan, keuangan, dan nutrisi Anda untuk memberikan rekomendasi pribadi secara otomatis.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <a href="#pricing" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl transition-all duration-300 shadow-glow">
-                            <i class="fa-solid fa-crown text-xs"></i>
-                            Lihat Paket Premium
-                        </a>
-                        <a href="#fitur" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3 border border-brand-200 bg-white hover:bg-brand-50 text-brand-700 font-bold rounded-xl transition-all duration-300">
-                            <i class="fa-solid fa-arrow-left text-xs"></i>
-                            Kembali ke Fitur
-                        </a>
+                    <span class="text-brand-600 font-bold">325 kkal</span>
+                </div>
+                <div class="flex items-center justify-between p-4 rounded-2xl border border-accent-blue/20 bg-white">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-accent-blue/10 flex items-center justify-center text-accent-blue"><i class="fa-solid fa-apple-whole"></i></div>
+                        <div><p class="text-sm font-bold text-ink">Smoothie Buah Campuran</p><p class="text-[10px] text-ink-soft">Terdeteksi via kamera</p></div>
                     </div>
+                    <span class="text-accent-blue font-bold">180 kkal</span>
+                </div>
+                <div class="flex items-center justify-between p-4 rounded-2xl border border-accent-orange/20 bg-white">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-accent-orange/10 flex items-center justify-center text-accent-orange"><i class="fa-solid fa-hamburger"></i></div>
+                        <div><p class="text-sm font-bold text-ink">Cheeseburger dan Kentang</p><p class="text-[10px] text-ink-soft">Terdeteksi via kamera</p></div>
+                    </div>
+                    <span class="text-accent-orange font-bold">650 kkal</span>
+                </div>
+                <a href="#pricing" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-3 text-sm font-bold text-white shadow-glow hover:bg-brand-700 transition"><i class="fa-solid fa-crown text-xs"></i>Aktifkan Food AI (Premium)</a>
+            </div>
+
+            <div class="relative">
+                <div class="relative rounded-3xl bg-slate-900 p-8 shadow-2xl overflow-hidden border border-slate-800 animate-float-slow">
+                    <div class="absolute inset-0 -z-10 bg-brand-500/10 blur-[80px] rounded-full"></div>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 text-xs font-bold"><i class="fa-solid fa-circle-check"></i>Deteksi Langsung</span>
+                        <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-500 animate-ping"></span><span class="text-xs text-brand-300 font-medium">AI sedang menganalisis...</span></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10"><p class="text-[10px] text-slate-400 uppercase tracking-wider mb-1">Protein</p><p class="text-xl font-bold text-white">28 g</p></div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10"><p class="text-[10px] text-slate-400 uppercase tracking-wider mb-1">Karbohidrat</p><p class="text-xl font-bold text-white">32 g</p></div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10"><p class="text-[10px] text-slate-400 uppercase tracking-wider mb-1">Lemak</p><p class="text-xl font-bold text-white">12 g</p></div>
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10"><p class="text-[10px] text-slate-400 uppercase tracking-wider mb-1">Serat</p><p class="text-xl font-bold text-white">6 g</p></div>
+                    </div>
+                    <div class="h-1 w-full bg-white/10 rounded-full overflow-hidden mb-4"><div class="h-full bg-brand-400 rounded-full" style="width: 78%"></div></div>
+                    <p class="text-xs text-slate-400">Kecocokan nutrisi dengan target harian Anda</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+
+
+

@@ -20,10 +20,26 @@
 const STORE_URL = '';
 
 /**
+ * URL toko resmi khusus Android (Google Play).
+ */
+const ANDROID_STORE_URL = '';
+
+/**
+ * URL toko resmi khusus iOS (App Store).
+ */
+const IOS_STORE_URL = '';
+
+/**
  * Dipakai untuk menandai elemen CTA unduhan.
  * app.js akan mengganti href-nya otomatis bila STORE_URL terisi.
  */
 const DOWNLOAD_SELECTOR = '[data-download]';
+
+/**
+ * Selector untuk tombol unduh Android dan iOS terpisah.
+ */
+const DOWNLOAD_ANDROID_SELECTOR = '[data-download-android]';
+const DOWNLOAD_IOS_SELECTOR = '[data-download-ios]';
 
 const SECTIONS = [
     { id: 'section-header', file: 'sections/header.html' },
@@ -187,21 +203,53 @@ function initNavbar() {
    3. Tautan unduhan aplikasi
    ========================================================== */
 function initDownloadLinks() {
+    /* --- General download ([data-download]) --- */
     const links = document.querySelectorAll(DOWNLOAD_SELECTOR);
-    if (!links.length) return;
+    if (links.length) {
+        links.forEach((link) => {
+            if (!STORE_URL) {
+                link.setAttribute('href', '#pricing');
+                link.setAttribute('data-store-placeholder', 'true');
+                link.title = 'Link toko resmi belum tersedia - menampilkan pilihan paket';
+                return;
+            }
+            link.setAttribute('href', STORE_URL);
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        });
+    }
 
-    links.forEach((link) => {
-        if (!STORE_URL) {
-            // Fallback: arahkan ke section harga/pricing
-            link.setAttribute('href', '#pricing');
-            link.setAttribute('data-store-placeholder', 'true');
-            link.title = 'Link toko resmi belum tersedia - menampilkan pilihan paket';
-            return;
-        }
-        link.setAttribute('href', STORE_URL);
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
-    });
+    /* --- Android download ([data-download-android]) --- */
+    const androidLinks = document.querySelectorAll(DOWNLOAD_ANDROID_SELECTOR);
+    if (androidLinks.length) {
+        androidLinks.forEach((link) => {
+            const url = ANDROID_STORE_URL || '#pricing';
+            link.setAttribute('href', url);
+            if (ANDROID_STORE_URL) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            } else {
+                link.setAttribute('data-store-placeholder', 'true');
+                link.title = 'Link Google Play belum tersedia - menampilkan pilihan paket';
+            }
+        });
+    }
+
+    /* --- iOS download ([data-download-ios]) --- */
+    const iosLinks = document.querySelectorAll(DOWNLOAD_IOS_SELECTOR);
+    if (iosLinks.length) {
+        iosLinks.forEach((link) => {
+            const url = IOS_STORE_URL || '#pricing';
+            link.setAttribute('href', url);
+            if (IOS_STORE_URL) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            } else {
+                link.setAttribute('data-store-placeholder', 'true');
+                link.title = 'Link App Store belum tersedia - menampilkan pilihan paket';
+            }
+        });
+    }
 }
 
 /* ==========================================================
