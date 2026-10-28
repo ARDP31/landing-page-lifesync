@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LifeSync - Daily Habit Tracker & AI Assistance</title>
     <meta name="description" content="LifeSync adalah aplikasi Daily Habit Tracker & Assistance yang menyatukan kesehatan, waktu, keuangan, dan produktivitas dalam satu ekosistem. Kerjakan kebiasaan harian dengan bantuan AI, bahkan saat offline.">
-    <meta name="theme-color" content="#00B368">
+    <meta name="theme-color" content="#16A34A">
     <link rel="icon" type="image/png" href="assets/lifesync-symbol.png">
 
     <!-- Open Graph / Social Preview -->
@@ -21,40 +21,102 @@
             theme: {
                 extend: {
                     colors: {
-                        // Primary Green - warna utama LifeSync (Brand Guidelines & App)
+                        // Primary Green
+                        primary: {
+                            DEFAULT: '#16A34A',
+                            50:  '#F0FDF4',
+                            100: '#DCFCE7',
+                            200: '#BBF7D0',
+                            300: '#86EFAC',
+                            400: '#4ADE80',
+                            500: '#16A34A',
+                            600: '#15803D',
+                            700: '#166534',
+                            800: '#14532D',
+                            900: '#052E16'
+                        },
+                        // brand aliases primary for template compatibility
                         brand: {
-                            50:  '#ECFDF5',
-                            100: '#D6F5E6',
-                            200: '#ADEBCE',
-                            300: '#74DBAC',
-                            400: '#38C585',
-                            500: '#00B368',
-                            600: '#009153',
-                            700: '#067647',
-                            800: '#075E3A',
-                            900: '#064E32'
+                            DEFAULT: '#16A34A',
+                            50:  '#F0FDF4',
+                            100: '#DCFCE7',
+                            200: '#BBF7D0',
+                            300: '#86EFAC',
+                            400: '#4ADE80',
+                            500: '#16A34A',
+                            600: '#15803D',
+                            700: '#166534',
+                            800: '#14532D',
+                            900: '#052E16'
                         },
-                        // Aksen per pilar kehidupan (Brand Guidelines)
+                        // Lime accent
+                        secondary: {
+                            DEFAULT: '#84CC16',
+                            50:  '#F7FEE7',
+                            100: '#ECFCCB',
+                            200: '#D9F99D',
+                            300: '#BEF264',
+                            400: '#A3E635',
+                            500: '#84CC16',
+                            600: '#65A30D',
+                            700: '#4D7C0F',
+                            800: '#3F6212',
+                            900: '#365314'
+                        },
+                        // Sky blue for information and assistance
+                        tertiary: {
+                            DEFAULT: '#0EA5E9',
+                            50:  '#F0F9FF',
+                            100: '#E0F2FE',
+                            200: '#BAE6FD',
+                            300: '#7DD3FC',
+                            400: '#38BDF8',
+                            500: '#0EA5E9',
+                            600: '#0284C7',
+                            700: '#0369A1',
+                            800: '#075985',
+                            900: '#0C4A6E'
+                        },
+                        // Accent aliases
                         accent: {
-                            orange: '#FFA330',
-                            purple: '#935EEE',
-                            blue:   '#0E8DE7',
-                            teal:   '#0A9073'
+                            DEFAULT: '#84CC16',
+                            orange:  '#84CC16',
+                            coral:   '#84CC16',
+                            teal:    '#0EA5E9',
+                            tertiary:'#0EA5E9',
+                            purple:  '#0EA5E9',
+                            blue:    '#0EA5E9',
+                            emerald: '#16A34A'
                         },
-                        // Warna teks & permukaan aplikasi
+                        // Neutral shades
+                        neutral: {
+                            900: '#24352B',
+                            800: '#33483A',
+                            700: '#465B4D',
+                            600: '#5E7165',
+                            500: '#788A7D',
+                            400: '#9BA99F',
+                            300: '#C4CEC6',
+                            200: '#DEE6DF',
+                            100: '#EDF3ED',
+                            50:  '#F7FAF7'
+                        },
+                        // Text colors
                         ink: {
-                            DEFAULT: '#1E2D27',
-                            soft:    '#6B8077',
-                            muted:   '#9AA8A1'
+                            DEFAULT: '#24352B',
+                            soft:    '#5E7165',
+                            muted:   '#9BA99F'
                         }
                     },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif']
                     },
                     boxShadow: {
-                        glow:   '0 18px 45px -18px rgba(0, 179, 104, 0.55)',
-                        'glow-lg': '0 28px 70px -22px rgba(0, 179, 104, 0.60)',
-                        card:   '0 22px 60px -30px rgba(30, 45, 39, 0.35)'
+                        glow:      '0 18px 45px -18px rgba(22, 163, 74, 0.45)',
+                        'glow-lg': '0 28px 70px -22px rgba(22, 163, 74, 0.55)',
+                        card:      '0 22px 60px -30px rgba(36, 53, 43, 0.25)',
+                        soft:      '0 4px 20px -4px rgba(36, 53, 43, 0.05), 0 2px 6px -2px rgba(36, 53, 43, 0.03)',
+                        'soft-hover': '0 10px 25px -5px rgba(22, 163, 74, 0.12), 0 4px 10px -2px rgba(22, 163, 74, 0.06)'
                     },
                     borderRadius: {
                         '4xl': '2rem',
@@ -73,7 +135,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-white text-ink font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="bg-[#F7FAF7] text-ink font-sans antialiased selection:bg-brand-500 selection:text-white">
 
     <!-- 1. HEADER / NAVBAR -->
     <div id="section-header"></div>

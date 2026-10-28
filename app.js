@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         { name: 'Navbar', fn: initNavbar },
         { name: 'Reveal Animations', fn: initReveal },
         { name: 'Feature Cards', fn: initFeatureCards },
+        { name: 'Showcase Navigation', fn: initShowcaseNavigation },
         { name: 'Download Links', fn: initDownloadLinks },
         { name: 'Kontak Form', fn: initKontakForm },
         { name: 'Smooth Scroll', fn: initSmoothScroll }
@@ -337,7 +338,41 @@ function initFeatureCards() {
 }
 
 /* ==========================================================
-   7. Kontak Form: validasi & Formspree submit
+   7. Showcase app navigation
+   ========================================================== */
+function initShowcaseNavigation() {
+    var tabs = document.querySelectorAll('[data-showcase-tab]');
+    var views = document.querySelectorAll('[data-showcase-view]');
+    if (!tabs.length || !views.length) return;
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            var selectedView = tab.getAttribute('data-showcase-tab');
+            var viewExists = false;
+
+            views.forEach(function (view) {
+                var isSelected = view.getAttribute('data-showcase-view') === selectedView;
+                view.classList.toggle('hidden', !isSelected);
+                view.hidden = !isSelected;
+                if (isSelected) viewExists = true;
+            });
+
+            if (!viewExists) {
+                console.error('Showcase view "' + selectedView + '" tidak ditemukan');
+                return;
+            }
+
+            tabs.forEach(function (item) {
+                var isSelected = item === tab;
+                item.classList.toggle('is-active', isSelected);
+                item.setAttribute('aria-pressed', String(isSelected));
+            });
+        });
+    });
+}
+
+/* ==========================================================
+   8. Kontak Form: validasi & Formspree submit
    ========================================================== */
 function initKontakForm() {
     var form = document.getElementById('kontak-form');

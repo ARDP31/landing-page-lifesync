@@ -64,19 +64,16 @@ Setiap halaman detail memiliki:
    - `initDownloadLinks()` — tombol unduh (arahkan ke `#pricing` jika `STORE_URL` kosong).
    - `initSmoothScroll()` — scroll halus ke anchor dengan offset navbar.
 
-## 🎨 Konvensi Warna (Tailwind Config di `index.html`)
+## 🎨 Konvensi Warna LifeSync
 
-| Variabel | Kode Hex | Digunakan untuk |
-|----------|----------|-----------------|
-| `brand-500` | `#00B368` | Warna utama LifeSync (tombol utama, aksen). |
-| `brand-600` | `#009153` | Warna hover / state aktif. |
-| `accent-orange` | `#FFA330` | Pilar Keuangan. |
-| `accent-blue` | `#0E8DE7` | Pilar Kalender / Notes. |
-| `accent-purple` | `#935EEE` | Pilar Memento. |
-| `accent-emerald` | (turunan brand) | Pilar Nutrisi. |
-| `ink-DEFAULT` | `#1E2D27` | Teks utama. |
-| `ink-soft` | `#6B8077` | Teks sekunder. |
-| `ink-muted` | `#9AA8A1` | Teks disable / abu-abu. |
+| Token / Variabel | Kode Hex | Deskripsi / Penggunaan |
+|------------------|----------|------------------------|
+| `primary-500` / `brand-500` | `#16A34A` | Hijau utama untuk tombol aksi, navigasi aktif, progres, dan identitas LifeSync. |
+| `secondary` / `accent` | `#84CC16` | Lime untuk aksen visual, target, pencapaian, dan bagian grafik. |
+| `tertiary` / `accent-blue` | `#0EA5E9` | Sky blue untuk informasi, statistik sekunder, tautan, dan Assistance. |
+| `neutral-50` / `--bg-page` | `#F7FAF7` | Latar halaman, area konten, dan ruang kerja. |
+| `neutral-900` / `ink-DEFAULT` | `#24352B` | Warna judul, isi teks, dan label penting. |
+| `border-soft` | `#DEE6DF` | Garis pembatas kartu dan navbar. |
 
 ## 🛠️ Cara Menambah Fitur Baru
 

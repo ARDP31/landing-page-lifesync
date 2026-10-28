@@ -17,11 +17,14 @@ const FILES = [
     'sections/offline.html',
     'sections/ai.html',
     'sections/pricing.html',
+    'sections/kontak.html',
     'sections/footer.html',
     'pages/nutrisi.html',
     'pages/keuangan.html',
     'pages/kalender.html',
     'pages/memento.html',
+    'pages/fitur-todo.html',
+    'pages/fitur-notes.html',
 ];
 
 const TAG_RE = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*?)(\/?)>/g;

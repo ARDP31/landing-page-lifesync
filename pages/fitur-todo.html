@@ -3,47 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeSync - Todo & Task Planner</title>
+    <title>LifeSync - Todo &amp; Task Planner</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind-config.js"></script>
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="../assets/lifesync-symbol.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-50 text-slate-800 p-6 sm:p-12">
-    <div class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-xl space-y-6">
+<body class="bg-[#F7FAF7] text-neutral-900 p-6 sm:p-12 font-sans selection:bg-brand-500 selection:text-white">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-xl space-y-6 border border-[#DEE6DF]">
         <a href="../index.html#fitur" class="inline-flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition">
             <i class="fa-solid fa-arrow-left"></i> Kembali ke Fitur Utama
         </a>
-        <div class="flex items-center space-x-4 border-b pb-4">
+        <div class="flex items-center space-x-4 border-b border-[#DEE6DF] pb-4">
             <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center text-2xl font-bold">
                 <i class="fa-solid fa-list-check"></i>
             </div>
             <div>
-                <h1 class="text-2xl font-black text-slate-900">Todo &amp; Task Planner</h1>
-                <p class="text-sm text-slate-500">Fitur Unggulan LifeSync</p>
+                <h1 class="text-2xl font-black text-neutral-900">Todo &amp; Task Planner</h1>
+                <p class="text-sm text-neutral-600">Fitur Unggulan LifeSync</p>
             </div>
         </div>
-        <p class="text-slate-600 leading-relaxed text-sm sm:text-base mb-4">
+        <p class="text-neutral-600 leading-relaxed text-sm sm:text-base mb-4">
             LifeSync menyediakan pengelolaan daftar tugas harian dengan fitur CRUD lengkap. Pengguna dapat membuat tugas baru, menentukan tenggat waktu, menandai status selesai, serta menerima pemicu notifikasi lokal sehingga tidak pernah ketinggalan jadwal penting.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6">
-            <div class="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm">
-                <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-plus text-brand-600"></i> Buat &amp Kelola Tugas
+            <div class="p-6 rounded-2xl border border-[#DEE6DF] bg-white shadow-sm">
+                <h3 class="text-lg font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-plus text-brand-600"></i> Buat &amp; Kelola Tugas
                 </h3>
-                <ul class="space-y-3 text-sm text-slate-600">
+                <ul class="space-y-3 text-sm text-neutral-600">
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Buat tugas baru dengan judul, deskripsi, dan prioritas</span></li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Tetapkan tenggat waktu (deadline) dan waktu pengingat</span></li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Ubah status tugas menjadi belum selesai, dalam proses, atau selesai</span></li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Edit atau hapus tugas yang sudah dibuat</span></li>
                 </ul>
             </div>
-            <div class="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm">
-                <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-bell text-brand-600"></i> Pengingat &amp Notifikasi
+            <div class="p-6 rounded-2xl border border-[#DEE6DF] bg-white shadow-sm">
+                <h3 class="text-lg font-bold text-neutral-900 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-bell text-brand-600"></i> Pengingat &amp; Notifikasi
                 </h3>
-                <ul class="space-y-3 text-sm text-slate-600">
+                <ul class="space-y-3 text-sm text-neutral-600">
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Notifikasi lokal muncul sebelum tenggat waktu tugas</span></li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Pengingat berfungsi bahkan saat aplikasi offline</span></li>
                     <li class="flex items-start gap-3"><i class="fa-solid fa-check text-xs text-brand-500 mt-0.5"></i> <span class="leading-relaxed">Tampilkan daftar tugas yang harus diselesaikan hari ini</span></li>
@@ -54,7 +55,7 @@
 
         <div class="p-6 rounded-2xl border border-brand-100 bg-brand-50">
             <h3 class="text-lg font-bold text-brand-700 mb-3">Manfaat bagi Pengguna</h3>
-            <p class="text-sm text-brand-600 leading-relaxed">Dengan Todo &amp Task Planner, pengguna dapat mengorganisir kegiatan harian dengan lebih terstruktur, meningkatkan produktivitas, dan tidak pernah melupakan tugas penting yang harus diselesaikan.</p>
+            <p class="text-sm text-brand-600 leading-relaxed">Dengan Todo &amp; Task Planner, pengguna dapat mengorganisir kegiatan harian dengan lebih terstruktur, meningkatkan produktivitas, dan tidak pernah melupakan tugas penting yang harus diselesaikan.</p>
         </div>
     </div>
 </body>

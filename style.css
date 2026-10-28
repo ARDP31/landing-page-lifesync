@@ -1,11 +1,25 @@
 /* ============================================================
    LifeSync - Product Profile Website
-   Custom CSS: navigasi, animasi, layer dekoratif, reveal on scroll
-   ============================================================
-   Catatan: Palet warna TIDAK didefinisikan di sini.
-   Semua warna brand (brand-*, accent-*, ink-*) memakai
-   konfigurasi `tailwind.config` pada index.html agar konsisten.
+   Custom CSS: tema warna LifeSync, navigasi, animasi, layer dekoratif
    ============================================================ */
+
+/* ---------------------------------------------------------
+   0. Design System Tokens
+   --------------------------------------------------------- */
+:root {
+    --primary: #16A34A;
+    --primary-hover: #15803D;
+    --primary-light: #DCFCE7;
+    --secondary: #84CC16;
+    --secondary-hover: #65A30D;
+    --secondary-light: #F7FEE7;
+    --tertiary: #0EA5E9;
+    --neutral-dark: #24352B;
+    --neutral-muted: #5E7165;
+    --neutral-light: #9BA99F;
+    --bg-page: #F7FAF7;
+    --border-soft: #DEE6DF;
+}
 
 /* ---------------------------------------------------------
    1. Base
@@ -18,12 +32,66 @@ html {
 body {
     font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system,
                  BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--neutral-dark);
     overflow-x: hidden;
 }
 
 ::selection {
-    background-color: #00B368;
+    background-color: var(--primary);
     color: #ffffff;
+}
+
+/* Komponen Style yang selaras dengan admin-auth.blade.php */
+.soft-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 4px 20px -4px rgba(36, 53, 43, 0.05), 0 2px 6px -2px rgba(36, 53, 43, 0.03);
+}
+
+.soft-card-interactive {
+    transition: all 0.2s ease-in-out;
+}
+
+.soft-card-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(22, 163, 74, 0.12), 0 4px 10px -2px rgba(22, 163, 74, 0.06);
+    border-color: #BBF7D0;
+}
+
+.primary-btn {
+    background-color: var(--primary);
+    color: #FFFFFF;
+    transition: all 0.2s ease;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 4px 14px 0 rgba(22, 163, 74, 0.35);
+}
+
+.secondary-btn {
+    background-color: var(--secondary);
+    color: var(--neutral-dark);
+    transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+    background-color: var(--secondary-hover);
+    box-shadow: 0 4px 14px 0 rgba(132, 204, 22, 0.35);
+}
+
+.form-input-clean {
+    background-color: #FFFFFF;
+    border: 1.5px solid #C4CEC6;
+    color: var(--neutral-dark);
+    transition: all 0.15s ease;
+}
+
+.form-input-clean:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
 }
 
 /* Offset anchor agar judul section tidak tertutup navbar fixed */
@@ -48,7 +116,7 @@ section[id] {
     border-radius: 9999px;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #6B8077;
+    color: var(--neutral-muted);
     transition: color 0.25s ease, background-color 0.25s ease;
 }
 
@@ -60,7 +128,7 @@ section[id] {
     bottom: 0.15rem;
     height: 2px;
     border-radius: 9999px;
-    background-color: #00B368;
+    background-color: var(--primary);
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -68,8 +136,8 @@ section[id] {
 
 .nav-link:hover,
 .nav-link:focus-visible {
-    color: #009153;
-    background-color: rgba(0, 179, 104, 0.08);
+    color: var(--primary-hover);
+    background-color: rgba(22, 163, 74, 0.08);
     outline: none;
 }
 
@@ -80,7 +148,7 @@ section[id] {
 }
 
 .nav-link.is-active {
-    color: #009153;
+    color: var(--primary);
 }
 
 /* ---------------------------------------------------------
@@ -94,14 +162,14 @@ section[id] {
     border-radius: 0.75rem;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #1E2D27;
+    color: var(--neutral-dark);
     transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
 }
 
 .mobile-link:hover,
 .mobile-link:focus-visible {
-    background-color: rgba(0, 179, 104, 0.08);
-    color: #009153;
+    background-color: rgba(22, 163, 74, 0.08);
+    color: var(--primary-hover);
     padding-left: 1.15rem;
     outline: none;
 }
@@ -111,7 +179,7 @@ section[id] {
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     font-size: 0.8rem;
-    color: #9AA8A1;
+    color: var(--neutral-light);
 }
 
 /* ---------------------------------------------------------
@@ -124,9 +192,9 @@ section[id] {
 }
 
 #navbar.is-scrolled #navbar-bar {
-    background-color: rgba(255, 255, 255, 0.92);
-    border-bottom-color: #EDF1EF;
-    box-shadow: 0 12px 34px -22px rgba(30, 45, 39, 0.45);
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom-color: var(--border-soft);
+    box-shadow: 0 12px 34px -22px rgba(36, 53, 43, 0.35);
 }
 
 /* ---------------------------------------------------------
@@ -134,11 +202,38 @@ section[id] {
    --------------------------------------------------------- */
 .hero-grid {
     background-image:
-        linear-gradient(to right, rgba(0, 179, 104, 0.07) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 179, 104, 0.07) 1px, transparent 1px);
+        linear-gradient(to right, rgba(22, 163, 74, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(22, 163, 74, 0.07) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 40%, transparent 100%);
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 40%, transparent 100%);
+}
+
+.showcase-nav-button {
+    color: var(--neutral-muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.showcase-nav-button:hover,
+.showcase-nav-button:focus-visible {
+    color: var(--primary);
+    outline: none;
+}
+
+.showcase-nav-button:focus-visible .showcase-nav-icon {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.showcase-nav-button.is-active {
+    color: var(--primary);
+}
+
+.showcase-nav-button.is-active .showcase-nav-icon {
+    background-color: var(--primary);
+    color: #FFFFFF;
+    box-shadow: 0 5px 14px rgba(22, 163, 74, 0.3);
+    transform: translateY(-2px);
 }
 
 /* ---------------------------------------------------------
@@ -202,4 +297,3 @@ section[id] {
         transform: none;
     }
 }
-
