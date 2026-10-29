@@ -5,8 +5,9 @@
   "description": "LifeSync - product profile website (static HTML/CSS/JS)",
   "scripts": {
     "build": "node tools/build.js",
+    "prebuild": "node tools/validate.js",
+    "validate": "node tools/validate.js && node tools/build.js",
     "serve": "node tools/serve.js",
-    "validate": "node tools/validate.js",
     "depth": "node tools/depth.js",
     "test:browser": "node tools/browser-test.js",
     "test": "node tools/validate.js && node tools/browser-test.js"
