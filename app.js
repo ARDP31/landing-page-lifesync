@@ -451,7 +451,7 @@ function initKontakForm() {
             }
         })
         .catch(function () {
-            alert('Gagal mengirim pesan. Coba lagi nanti atau hubungi kami melalui email langsung:\npbl507.bisnis@gmail.com');
+            alert('Gagal mengirim pesan. Coba lagi nanti atau hubungi kami melalui email langsung:\npartnership@lifesync.id');
         })
         .finally(function () {
             if (btn) btn.disabled = false;
