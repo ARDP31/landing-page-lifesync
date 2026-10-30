@@ -5,3 +5,5 @@ tools/
 package.json
 package-lock.json
 *.md
+.agent/
+.gemini/
