@@ -1,4 +1,4 @@
-﻿<!-- ============================================================
+<!-- ============================================================
       HERO SECTION - LifeSync Product Profile Website
       Gojek-inspired: clean, bold headline, phone showcase right
       ============================================================ -->
@@ -30,10 +30,21 @@
                 <!-- Subheadline -->
                 <!-- <p class="text-base sm:text-lg text-ink-soft leading-relaxed max-w-lg">
                     LifeSync mengintegrasikan semua aktivitas pribadi Anda
-                    tugas, kalender, catatan, keuangan, nutrisi, dan jurnal ke dalam satu platform terpadu. Gantikan pendekatan konvensional yang terpisah-pisah dengan ekosistem yang efisien. Berkat sistem Offline-First berbasis SQLite, aplikasi tetap berjalan lancar tanpa internet, dengan sinkronisasi otomatis ke cloud saat online. &#8212; bahkan saat tanpa internet.
+                    tugas, kalender, catatan, keuangan, dan jurnal ke dalam satu platform terpadu. Gantikan pendekatan konvensional yang terpisah-pisah dengan ekosistem yang efisien. Berkat sistem Offline-First, aplikasi tetap berjalan lancar tanpa internet, dengan sinkronisasi otomatis ke cloud saat online. &#8212; bahkan saat tanpa internet.
                 </p> -->
 
-                <!-- CTA Unduh --><div class="flex flex-col sm:flex-row items-center gap-4"><a href="#" data-download-android class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-xl bg-brand-500 px-8 py-5 text-base font-bold text-white transition-all duration-200 hover:bg-brand-600"><i class="fa-solid fa-download text-sm"></i>Unduh untuk Android</a><a href="#" data-download-ios class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-xl bg-white border border-slate-200 px-8 py-5 text-base font-bold text-ink shadow-sm transition-all duration-300 hover:bg-slate-50 hover:border-brand-300"><i class="fa-brands fa-apple text-sm text-brand-600"></i>Unduh untuk iOS</a><a href="#fitur" class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-xl bg-white border border-slate-200 px-8 py-5 text-base font-bold text-ink shadow-sm transition-all duration-300 hover:bg-slate-50 hover:border-brand-300"><i class="fa-solid fa-play text-sm text-brand-600"></i>Lihat Fitur</a></div>
+                <!-- CTA Unduh -->
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <a href="#" data-download-android class="btn-interactive inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-lg bg-brand-500 px-7 py-4 text-base font-bold text-white shadow-sm">
+                        <i class="fa-solid fa-download text-sm"></i>Unduh untuk Android
+                    </a>
+                    <a href="#" data-download-ios class="btn-secondary-interactive inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-lg bg-white border border-slate-200 px-7 py-4 text-base font-bold text-ink shadow-xs">
+                        <i class="fa-brands fa-apple text-sm text-brand-600"></i>Unduh untuk iOS
+                    </a>
+                    <a href="#fitur" class="btn-secondary-interactive inline-flex items-center justify-center gap-2.5 w-full sm:w-auto rounded-lg bg-white border border-slate-200 px-7 py-4 text-base font-bold text-ink shadow-xs">
+                        <i class="fa-solid fa-play text-sm text-brand-600"></i>Lihat Fitur
+                    </a>
+                </div>
 
                 <!-- Statistik kepercayaan -->
                 <div class="mt-10 flex items-center justify-start gap-8 text-sm font-semibold text-ink-soft">
@@ -216,26 +227,27 @@
                                 </div>
                             </div>
 
-                            <!-- Nutrition screen -->
-                            <div data-showcase-view="nutrition" class="hidden mt-5 space-y-4">
+                            <!-- Notes screen -->
+                            <div data-showcase-view="notes" class="hidden mt-5 space-y-4">
                                 <div>
-                                    <h2 class="text-xl font-bold text-neutral-900">Nutrisi</h2>
-                                    <p class="mt-1 text-xs text-neutral-500">Pantau asupan harianmu</p>
+                                    <h2 class="text-xl font-bold text-neutral-900">Catatan &amp; Ide</h2>
+                                    <p class="mt-1 text-xs text-neutral-500">Kumpulan catatan dan arsip ide Anda</p>
                                 </div>
-                                <div class="rounded-xl border border-[#DEE6DF] bg-white p-5 text-center">
-                                    <div class="mx-auto flex h-28 w-28 items-center justify-center rounded-full border-[10px] border-sky-100 border-t-sky-500">
-                                        <div><p class="text-xl font-extrabold text-neutral-900">1.240</p><p class="text-[10px] text-neutral-500">dari 2.000 kkal</p></div>
+                                <div class="rounded-xl border border-[#DEE6DF] bg-white p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-[10px] font-bold text-brand-600 uppercase tracking-wider bg-brand-50 px-2 py-0.5 rounded">Penting</span>
+                                        <span class="text-[10px] text-neutral-400">Hari ini, 14:20</span>
                                     </div>
-                                    <p class="mt-4 text-sm font-bold text-neutral-900">Kalori Hari Ini</p>
-                                    <p class="mt-1 text-xs text-neutral-500">Kamu sudah mencapai 62% target harian</p>
+                                    <h3 class="text-sm font-bold text-neutral-900">Rencana Prioritas Mingguan</h3>
+                                    <p class="mt-1.5 text-xs text-neutral-500 leading-relaxed">Fokus pada penyelesaian modul to-do, evaluasi anggaran bulanan, dan habit rutin harian.</p>
                                 </div>
-                                <div class="rounded-lg border border-[#DEE6DF] bg-white p-4">
-                                    <h3 class="text-sm font-bold text-neutral-900">Asupan Hari Ini</h3>
-                                    <div class="mt-4 space-y-4 text-xs">
-                                        <div><div class="mb-1.5 flex justify-between"><span class="text-neutral-600">Protein</span><span class="font-semibold text-neutral-800">65 / 90 g</span></div><div class="h-2 rounded-full bg-neutral-100"><div class="h-2 w-2/3 rounded-full bg-brand-500"></div></div></div>
-                                        <div><div class="mb-1.5 flex justify-between"><span class="text-neutral-600">Karbohidrat</span><span class="font-semibold text-neutral-800">120 / 250 g</span></div><div class="h-2 rounded-full bg-neutral-100"><div class="h-2 w-1/2 rounded-full bg-secondary-500"></div></div></div>
-                                        <div><div class="mb-1.5 flex justify-between"><span class="text-neutral-600">Air</span><span class="font-semibold text-neutral-800">4 / 8 gelas</span></div><div class="h-2 rounded-full bg-neutral-100"><div class="h-2 w-1/2 rounded-full bg-sky-500"></div></div></div>
+                                <div class="rounded-xl border border-[#DEE6DF] bg-white p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-[10px] font-bold text-secondary-700 uppercase tracking-wider bg-secondary-50 px-2 py-0.5 rounded">Ide Baru</span>
+                                        <span class="text-[10px] text-neutral-400">Kemarin, 09:15</span>
                                     </div>
+                                    <h3 class="text-sm font-bold text-neutral-900">Eksplorasi Kebiasaan Pagi</h3>
+                                    <p class="mt-1.5 text-xs text-neutral-500 leading-relaxed">Mulai hari dengan peregangan 10 menit, minum 2 gelas air, dan membaca 1 bab buku.</p>
                                 </div>
                             </div>
 
@@ -282,9 +294,9 @@
                                     <span class="showcase-nav-icon flex h-9 w-9 items-center justify-center rounded-xl"><i class="fa-solid fa-wallet text-sm" aria-hidden="true"></i></span>
                                     <span class="text-[9px] font-medium">Keuangan</span>
                                 </button>
-                                <button type="button" class="showcase-nav-button flex flex-col items-center gap-1 px-1" data-showcase-tab="nutrition" aria-label="Nutrisi" aria-pressed="false">
-                                    <span class="showcase-nav-icon flex h-9 w-9 items-center justify-center rounded-xl"><i class="fa-solid fa-utensils text-sm" aria-hidden="true"></i></span>
-                                    <span class="text-[9px] font-medium">Nutrisi</span>
+                                <button type="button" class="showcase-nav-button flex flex-col items-center gap-1 px-1" data-showcase-tab="notes" aria-label="Catatan" aria-pressed="false">
+                                    <span class="showcase-nav-icon flex h-9 w-9 items-center justify-center rounded-xl"><i class="fa-regular fa-note-sticky text-sm" aria-hidden="true"></i></span>
+                                    <span class="text-[9px] font-medium">Catatan</span>
                                 </button>
                                 <button type="button" class="showcase-nav-button flex flex-col items-center gap-1 px-1" data-showcase-tab="memento" aria-label="Memento" aria-pressed="false">
                                     <span class="showcase-nav-icon flex h-9 w-9 items-center justify-center rounded-xl"><i class="fa-solid fa-camera text-sm" aria-hidden="true"></i></span>

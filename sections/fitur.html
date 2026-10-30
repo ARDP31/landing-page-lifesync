@@ -1,52 +1,55 @@
 ﻿<!-- ============================================================
       FITUR UTAMA - LifeSync
-      4 pilar fitur inti berdasarkan SRS
+      4 pilar fitur inti
       ============================================================ -->
 <section id="fitur" class="py-20 bg-[#F7FAF7]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <h2 class="text-3xl sm:text-4xl font-black text-ink tracking-tight">Fitur Unggulan LifeSync</h2>
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4 reveal">
+            <span class="inline-flex items-center gap-2 border-b-2 border-brand-500 pb-1 text-xs font-bold text-brand-700 uppercase tracking-widest">
+                Fitur Unggulan
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-black text-ink tracking-tight">Empat Pilar Produktivitas Personal</h2>
             <p class="text-base text-ink-soft max-w-lg mx-auto leading-relaxed">
-                Empat pilar utama yang dirancang untuk mengoptimalkan manajemen kegiatan personal Anda dalam satu aplikasi.
+                Dirancang terpadu untuk menyederhanakan dan mengoptimalkan manajemen aktivitas harian Anda dalam satu ekosistem yang terintegrasi.
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Todo & Task Planner -->
-            <a href="pages/fitur-todo.html" class="group feature-card reveal reveal-delay-1 flex flex-col items-center p-8 rounded-xl border border-slate-100 bg-white hover:border-brand-200 hover:shadow-md transition-all duration-300 cursor-pointer">
-                <div class="w-14 h-14 rounded-2xl bg-brand-50 flex items-center justify-center text-brand-600 text-2xl mb-4 group-hover:bg-brand-100 transition-colors">
+            <!-- 1. Todo & Task Planner -->
+            <a href="pages/fitur-todo.html" data-feature="todo" class="group feature-card card-interactive reveal reveal-delay-1 flex flex-col items-center p-8 rounded-xl border border-slate-100 bg-white hover:border-brand-200 hover:shadow-md transition-all duration-300 cursor-pointer">
+                <div class="w-14 h-14 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 text-2xl mb-4 group-hover:bg-brand-100 transition-colors">
                     <i class="fa-solid fa-list-check"></i>
                 </div>
                 <h3 class="text-lg font-bold text-ink mb-2 text-center">Todo &amp; Kalender Visual</h3>
-                <p class="text-sm text-ink-soft text-center leading-relaxed">Pengelolaan tugas harian dan agenda kalender secara visual.</p>
-            </a><!-- Pencatatan Keuangan -->
-            <a href="pages/keuangan.html" class="group feature-card reveal reveal-delay-2 flex flex-col items-center p-8 rounded-xl border border-slate-100 bg-white hover:border-secondary/30 hover:shadow-md transition-all duration-300 cursor-pointer">
-                <div class="w-14 h-14 rounded-2xl bg-secondary-50 flex items-center justify-center text-secondary-500 text-2xl mb-4 group-hover:bg-secondary-100 transition-colors">
+                <p class="text-sm text-ink-soft text-center leading-relaxed">Pengelolaan tugas harian, prioritas aktivitas, dan agenda kalender visual terstruktur.</p>
+            </a>
+
+            <!-- 2. Pencatatan Keuangan -->
+            <a href="pages/keuangan.html" data-feature="keuangan" class="group feature-card card-interactive reveal reveal-delay-2 flex flex-col items-center p-8 rounded-xl border border-slate-100 bg-white hover:border-secondary/30 hover:shadow-md transition-all duration-300 cursor-pointer">
+                <div class="w-14 h-14 rounded-xl bg-secondary-50 flex items-center justify-center text-secondary-500 text-2xl mb-4 group-hover:bg-secondary-100 transition-colors">
                     <i class="fa-solid fa-wallet"></i>
                 </div>
-                <h3 class="text-lg font-bold text-ink mb-2 text-center">Catatan &amp; Keuangan Pribadi</h3>
-                <p class="text-sm text-ink-soft text-center leading-relaxed">Manajemen catatan bebas dan pencatatan transaksi keuangan harian/bulanan.</p>
+                <h3 class="text-lg font-bold text-ink mb-2 text-center">Keuangan Pribadi</h3>
+                <p class="text-sm text-ink-soft text-center leading-relaxed">Pencatatan arus kas, alokasi anggaran, dan pantauan pemasukan serta pengeluaran harian.</p>
             </a>
 
-            <!-- NutriScan & Nutrisi -->
-            <a href="pages/nutrisi.html" class="group feature-card reveal reveal-delay-3 flex flex-col items-center p-8 rounded-xl border border-slate-100 bg-white hover:border-tertiary/30 hover:shadow-md transition-all duration-300 cursor-pointer">
-                <div class="w-14 h-14 rounded-2xl bg-tertiary-50 flex items-center justify-center text-tertiary-500 text-2xl mb-4 group-hover:bg-tertiary-100 transition-colors">
-                    <i class="fa-solid fa-camera-retro"></i>
+            <!-- 3. Notes & Catatan Ide -->
+            <a href="pages/fitur-notes.html" data-feature="notes" class="group feature-card card-interactive reveal reveal-delay-3 flex flex-col items-center p-8 rounded-xl border border-slate-100 bg-white hover:border-tertiary/30 hover:shadow-md transition-all duration-300 cursor-pointer">
+                <div class="w-14 h-14 rounded-xl bg-tertiary-50 flex items-center justify-center text-tertiary-500 text-2xl mb-4 group-hover:bg-tertiary-100 transition-colors">
+                    <i class="fa-regular fa-note-sticky"></i>
                 </div>
-                <h3 class="text-lg font-bold text-ink mb-2 text-center">Food AI / Pemindaian Nutrisi</h3>
-                <p class="text-sm text-ink-soft text-center leading-relaxed">Deteksi otomatis kalori dan nutrisi makanan lewat foto menggunakan AI.</p>
+                <h3 class="text-lg font-bold text-ink mb-2 text-center">Notes &amp; Catatan Ide</h3>
+                <p class="text-sm text-ink-soft text-center leading-relaxed">Ruang bebas untuk menulis ide kreatif, ringkasan rapat, dan arsip informasi penting Anda.</p>
             </a>
 
-            <!-- Memento Journaling -->
-            <a href="pages/memento.html" class="group feature-card reveal reveal-delay-4 flex flex-col items-center p-8 rounded-xl border border-slate-100 bg-white hover:border-brand-300 hover:shadow-md transition-all duration-300 cursor-pointer">
-                <div class="w-14 h-14 rounded-2xl bg-brand-50 flex items-center justify-center text-brand-700 text-2xl mb-4 group-hover:bg-brand-100 transition-colors">
+            <!-- 4. Memento Journaling -->
+            <a href="pages/memento.html" data-feature="memento" class="group feature-card card-interactive reveal reveal-delay-4 flex flex-col items-center p-8 rounded-xl border border-slate-100 bg-white hover:border-brand-300 hover:shadow-md transition-all duration-300 cursor-pointer">
+                <div class="w-14 h-14 rounded-xl bg-brand-50 flex items-center justify-center text-brand-700 text-2xl mb-4 group-hover:bg-brand-100 transition-colors">
                     <i class="fa-solid fa-map-location-dot"></i>
                 </div>
-                <h3 class="text-lg font-bold text-ink mb-2 text-center">Memento (Journaling &amp; GPS)</h3>
-                <p class="text-sm text-ink-soft text-center leading-relaxed">Penyimpanan momen harian lengkap dengan foto dan visualisasi titik lokasi di peta.</p>
-            </a></div>
+                <h3 class="text-lg font-bold text-ink mb-2 text-center">Memento (Journal &amp; GPS)</h3>
+                <p class="text-sm text-ink-soft text-center leading-relaxed">Dokumentasi momen berharga dilengkapi visual foto kenangan dan titik lokasi peta.</p>
+            </a>
+        </div>
     </div>
 </section>
-
-
-

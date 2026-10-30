@@ -293,12 +293,10 @@ function initReveal() {
     var items = document.querySelectorAll('.reveal');
     if (items.length === 0) return;
 
-    // Langsung buat elemen yang sudah berada di viewport atau saat dimuat menjadi terlihat
-    items.forEach(function (el) {
-        el.classList.add('is-visible');
-    });
-
-    if (!('IntersectionObserver' in window)) return;
+    if (!('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+    }
 
     var observer = new IntersectionObserver(function (entries, obs) {
         entries.forEach(function (entry) {
@@ -307,9 +305,20 @@ function initReveal() {
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.05 });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
+    });
 
-    items.forEach(function (el) { observer.observe(el); });
+    items.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        // Elemen yang sudah di dalam viewport saat pertama load langsung diberi is-visible
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('is-visible');
+        } else {
+            observer.observe(el);
+        }
+    });
 }
 
 /* ==========================================================

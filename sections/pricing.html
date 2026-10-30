@@ -1,79 +1,196 @@
 ﻿<!-- ============================================================
-      PRICING / TIPE AKUN
-      Gojek-inspired: clean pricing cards
+      PRICING / TIPE AKUN - LifeSync
+      Minimalis, transparan, dan berfokus pada personalisasi
       ============================================================ -->
 <section id="pricing" class="py-20 bg-neutral-50">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <h2 class="text-3xl sm:text-4xl font-black text-ink tracking-tight">Pilih Tipe Akun</h2>
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4 reveal">
+            <span class="inline-flex items-center gap-2 border-b-2 border-brand-500 pb-1 text-xs font-bold text-brand-700 uppercase tracking-widest">
+                Paket &amp; Langganan
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-black text-ink tracking-tight">Pilih Paket Sesuai Kebutuhan</h2>
             <p class="text-base text-ink-soft max-w-lg mx-auto leading-relaxed">
-                Mulai dengan fitur dasar secara lokal, atau tingkatkan ke Premium untuk Financial Insight berbasis AI, Notifikasi Pribadi via FCM, dan akses cloud penuh.
+                Mulai gratis dengan fitur produktivitas esensial di perangkat Anda, atau tingkatkan ke Premium untuk personalisasi mendalam dan kecerdasan AI.
             </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Free Account -->
-            <div class="p-8 rounded-xl border border-[#DEE6DF] bg-white flex flex-col">
+        <!-- Pricing Cards (2 Kolom) -->
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            
+            <!-- 1. Free Account -->
+            <div class="p-8 rounded-xl border border-[#DEE6DF] bg-white flex flex-col justify-between shadow-xs card-interactive reveal reveal-delay-1">
                 <div class="space-y-4">
-                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Free Account</span>
-                    <h3 class="text-3xl font-black text-ink">Gratis <span class="text-sm font-normal text-slate-500">/ selalu</span></h3>
-                    <p class="text-sm text-ink-soft">Fitur dasar untuk pengelolaan kebiasaan pribadi di perangkat Anda.</p>
-                    <ul class="mt-6 space-y-3 text-sm text-slate-600">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Todo &amp; Task Planner</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Kalender &amp; Jadwal</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Catatan Keuangan Lokal</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Memento &amp; Nutrisi</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Bekerja Offline (SQLite)</li>
-                    </ul>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Akun Dasar</span>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">Lokal</span>
+                    </div>
+                    <h3 class="text-3xl font-black text-ink">Gratis <span class="text-sm font-normal text-slate-500">/ selamanya</span></h3>
+                    <p class="text-sm text-ink-soft leading-relaxed">
+                        Pengelolaan produktivitas dan kebiasaan pribadi secara mandiri langsung di perangkat Anda tanpa biaya langganan.
+                    </p>
+                    
+                    <div class="pt-4 border-t border-slate-100">
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Fitur yang disertakan:</p>
+                        <ul class="space-y-3 text-sm text-slate-600">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                                <span>Todo &amp; Task Planner harian</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                                <span>Kalender &amp; Jadwal visual interaktif</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                                <span>Pencatatan keuangan &amp; arus kas lokal</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                                <span>Notes &amp; Catatan ide tanpa batas</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                                <span>Memento Journaling &amp; penanda lokasi GPS</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                                <span>Penyimpanan aman di perangkat (Bisa digunakan Offline)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-500 mt-1"></i>
+                                <span class="font-medium text-slate-700">Notifikasi Standar (Pengingat jadwal &amp; tugas harian umum)</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <button class="mt-auto w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-4 rounded-xl transition text-sm">
-                    Mulai Gratis
-                </button>
+
+                <div class="pt-8 mt-6 border-t border-slate-100">
+                    <a href="#top" class="btn-secondary-interactive w-full bg-slate-100 text-slate-800 font-bold py-3.5 rounded-lg text-sm">
+                        Mulai Gunakan Gratis
+                    </a>
+                </div>
             </div>
 
-            <!-- Premium Account -->
-            <div class="p-8 rounded-xl bg-brand-700 text-white flex flex-col relative overflow-hidden">
-                
-                <div class="relative z-10 space-y-4">
-                    <span class="inline-flex items-center gap-1 text-xs font-bold text-secondary-400 uppercase tracking-widest border-b border-secondary-400 pb-0.5">
-                        <i class="fa-solid fa-crown"></i> Premium
-                    </span>
+            <!-- 2. Premium Account -->
+            <div class="p-8 rounded-xl bg-brand-700 text-white flex flex-col justify-between shadow-md relative overflow-hidden card-interactive reveal reveal-delay-2">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold text-secondary uppercase tracking-widest border-b border-secondary pb-0.5">
+                            <i class="fa-solid fa-crown text-xs"></i> Pengalaman Penuh
+                        </span>
+                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-secondary text-neutral-900">Personalized</span>
+                    </div>
                     <h3 class="text-3xl font-black">Premium <span class="text-sm font-normal text-brand-100">/ bulan</span></h3>
-                    <p class="text-brand-100 text-sm">Akses penuh ke cloud, AI Assistant, Financial Insight berbasis AI, dan Notifikasi Pribadi via FCM.</p>
-                    <ul class="mt-6 space-y-3 text-sm text-brand-100">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300"></i> Semua fitur akun Free</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300"></i> Sinkronisasi Data ke Cloud</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300"></i> AI Assistant (Gemini API)</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300"></i> Financial Insight Berbasis AI</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-300"></i> Notifikasi Pribadi via FCM</li>
-                    </ul>
+                    <p class="text-brand-100 text-sm leading-relaxed">
+                        Dirancang khusus untuk Anda yang menginginkan asistensi cerdas, wawasan mendalam, dan pengalaman yang terpersonalisasi secara penuh.
+                    </p>
+
+                    <div class="pt-4 border-t border-brand-600/60">
+                        <p class="text-xs font-bold uppercase tracking-wider text-brand-200 mb-3">Semua fitur Gratis, ditambah keunggulan personal:</p>
+                        <ul class="space-y-3 text-sm text-brand-100">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-300 mt-1"></i>
+                                <span><strong class="text-white">Notifikasi Personal &amp; Cerdas:</strong> Pengingat adaptif yang menyesuaikan kebiasaan unik dan rutinitas harian Anda</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-300 mt-1"></i>
+                                <span><strong class="text-white">Financial Insight Berbasis AI:</strong> Analisis mendalam arus kas dengan rekomendasi penghematan yang disesuaikan secara personal</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-300 mt-1"></i>
+                                <span><strong class="text-white">AI Assistant Personal:</strong> Asisten interaktif untuk tanya jawab produktivitas, kebiasaan, dan rencana kegiatan harian</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-300 mt-1"></i>
+                                <span><strong class="text-white">Sinkronisasi Cloud Real-Time:</strong> Cadangkan dan akses seluruh data secara otomatis di berbagai perangkat</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-brand-300 mt-1"></i>
+                                <span>Prioritas pembaruan fitur dan dukungan pengguna</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <button class="mt-auto w-full bg-white text-brand-700 hover:bg-brand-50 font-bold py-4 rounded-xl transition shadow-lg">
-                    Upgrade ke Premium
-                </button>
+
+                <div class="pt-8 mt-6 border-t border-brand-600/60">
+                    <a href="#kontak" class="btn-interactive w-full bg-white text-brand-700 font-bold py-3.5 rounded-lg text-sm shadow-sm">
+                        Tingkatkan ke Premium
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Divider label -->
+        <div class="mt-16 mb-10 flex items-center gap-4">
+            <div class="flex-1 h-px bg-[#DEE6DF]"></div>
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Keunggulan Personalisasi Premium</span>
+            <div class="flex-1 h-px bg-[#DEE6DF]"></div>
+        </div>
+
+        <!-- 4 Keunggulan Personalisasi (Grid 2 Kolom) -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- 1. Notifikasi Personal -->
+            <div class="p-6 sm:p-8 rounded-xl border border-[#DEE6DF] bg-white card-interactive reveal">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-secondary-50 flex items-center justify-center text-secondary-500 flex-shrink-0">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-ink mb-1">Notifikasi Berbasis Kebiasaan Personal</h4>
+                        <p class="text-sm text-ink-soft leading-relaxed">
+                            Bukan sekadar alarm biasa. Notifikasi cerdas membaca pola waktu aktif Anda dan mengirimkan pengingat tepat saat Anda paling responsif untuk menyelesaikan target.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Wawasan Finansial AI -->
+            <div class="p-6 sm:p-8 rounded-xl border border-[#DEE6DF] bg-white card-interactive reveal">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 flex-shrink-0">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-ink mb-1">Wawasan Finansial Disesuaikan</h4>
+                        <p class="text-sm text-ink-soft leading-relaxed">
+                            AI mengevaluasi pola pengeluaran mingguan dan bulanan Anda secara spesifik, mendeteksi pos belanja yang berlebih, serta memberikan saran realistis untuk mencapai target tabungan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Sinkronisasi Cloud -->
+            <div class="p-6 sm:p-8 rounded-xl border border-[#DEE6DF] bg-white card-interactive reveal">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-tertiary-50 flex items-center justify-center text-tertiary-500 flex-shrink-0">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-ink mb-1">Sinkronisasi Cloud Tingkat Lanjut</h4>
+                        <p class="text-sm text-ink-soft leading-relaxed">
+                            Beralih dari smartphone ke tablet atau perangkat lain tanpa kehilangan progres. Sinkronisasi otomatis berjalan di latar belakang begitu perangkat terhubung ke internet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. AI Assistant Pintar -->
+            <div class="p-6 sm:p-8 rounded-xl border border-[#DEE6DF] bg-white card-interactive reveal">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 flex-shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-ink mb-1">Asisten AI Adaptif</h4>
+                        <p class="text-sm text-ink-soft leading-relaxed">
+                            Dukungan Gemini AI yang memahami preferensi dan ritme harian Anda, siap memberikan ringkasan hari ini dan saran produktivitas yang relevan dan praktis.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Premium Benefit Highlights -->
-        <div class="mt-16 grid md:grid-cols-2 gap-8">
-            <div class="p-8 rounded-xl border border-[#DEE6DF] bg-white reveal reveal-delay-1">
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 flex-shrink-0"><i class="fa-solid fa-chart-pie"></i></div>
-                    <div>
-                        <h4 class="text-lg font-bold text-ink mb-1">Financial Insight Berbasis AI</h4>
-                        <p class="text-sm text-ink-soft leading-relaxed">Terima analisis kebiasaan keuangan Anda yang dihasilkan oleh AI. Dapatkan rekomendasi penghematan, prediksi pengeluaran bulanan, dan laporan keuangan yang mudah dipahami.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 rounded-xl border border-[#DEE6DF] bg-white reveal reveal-delay-2">
-                <div class="flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-secondary-50 flex items-center justify-center text-secondary-500 flex-shrink-0"><i class="fa-solid fa-bell"></i></div>
-                    <div>
-                        <h4 class="text-lg font-bold text-ink mb-1">Notifikasi Pribadi via FCM</h4>
-                        <p class="text-sm text-ink-soft leading-relaxed">Dapatkan pengingat kontekstual yang disesuaikan dengan rutinitas Anda melalui Firebase Cloud Messaging (FCM). Tidak pernah lewatkan habit, jadwal, atau catatan penting — bahkan saat aplikasi tertutup.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>

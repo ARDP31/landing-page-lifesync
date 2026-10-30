@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    LifeSync - Product Profile Website
    Custom CSS: tema warna LifeSync, navigasi, animasi, layer dekoratif
    ============================================================ */
@@ -42,7 +42,7 @@ body {
     color: #ffffff;
 }
 
-/* Komponen Style yang selaras dengan admin-auth.blade.php */
+/* Komponen Style */
 .soft-card {
     background-color: #FFFFFF;
     border: 1px solid var(--border-soft);
@@ -50,35 +50,101 @@ body {
 }
 
 .soft-card-interactive {
-    transition: all 0.2s ease-in-out;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .soft-card-interactive:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -6px rgba(22, 163, 74, 0.12), 0 4px 10px -2px rgba(22, 163, 74, 0.06);
+    border-color: #BBF7D0;
+}
+
+/* Micro-interactions: Buttons */
+.btn-interactive {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.2s ease;
+    will-change: transform;
+}
+
+.btn-interactive:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(22, 163, 74, 0.12), 0 4px 10px -2px rgba(22, 163, 74, 0.06);
+    box-shadow: 0 8px 20px -6px rgba(22, 163, 74, 0.35);
+}
+
+.btn-interactive:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-secondary-interactive {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.2s ease,
+                background-color 0.2s ease;
+    will-change: transform;
+}
+
+.btn-secondary-interactive:hover {
+    transform: translateY(-2px);
+    border-color: #86EFAC;
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 20px -6px rgba(36, 53, 43, 0.08);
+}
+
+.btn-secondary-interactive:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Micro-interactions: Cards */
+.card-interactive {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
+}
+
+.card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px -12px rgba(36, 53, 43, 0.12);
     border-color: #BBF7D0;
 }
 
 .primary-btn {
     background-color: var(--primary);
     color: #FFFFFF;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .primary-btn:hover {
     background-color: var(--primary-hover);
-    box-shadow: 0 4px 14px 0 rgba(22, 163, 74, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px -4px rgba(22, 163, 74, 0.35);
+}
+
+.primary-btn:active {
+    transform: translateY(0) scale(0.98);
 }
 
 .secondary-btn {
     background-color: var(--secondary);
     color: var(--neutral-dark);
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .secondary-btn:hover {
     background-color: var(--secondary-hover);
-    box-shadow: 0 4px 14px 0 rgba(132, 204, 22, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px -4px rgba(132, 204, 22, 0.35);
+}
+
+.secondary-btn:active {
+    transform: translateY(0) scale(0.98);
 }
 
 .form-input-clean {
@@ -117,7 +183,7 @@ section[id] {
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--neutral-muted);
-    transition: color 0.2s ease, background-color 0.2s ease;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
 }
 
 .nav-link::after {
@@ -138,6 +204,10 @@ section[id] {
     color: var(--primary-hover);
     background-color: rgba(22, 163, 74, 0.08);
     outline: none;
+}
+
+.nav-link:active {
+    transform: scale(0.96);
 }
 
 .nav-link:hover::after,
@@ -185,19 +255,20 @@ section[id] {
    4. State navbar saat di-scroll
    --------------------------------------------------------- */
 #navbar-bar {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.85);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
+    transition: all 0.3s ease;
 }
 
 #navbar.is-scrolled #navbar-bar {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.96);
     border-bottom-color: var(--border-soft);
-    box-shadow: 0 12px 34px -22px rgba(36, 53, 43, 0.35);
+    box-shadow: 0 10px 30px -15px rgba(36, 53, 43, 0.15);
 }
 
 /* ---------------------------------------------------------
-   5. Layer dekoratif
+   5. Layer dekoratif & Showcase Prototype
    --------------------------------------------------------- */
 .hero-grid {
     background-image:
@@ -216,6 +287,7 @@ section[id] {
 .showcase-nav-button:hover,
 .showcase-nav-button:focus-visible {
     color: var(--primary);
+    transform: translateY(-1px);
     outline: none;
 }
 
@@ -232,35 +304,17 @@ section[id] {
     background-color: var(--primary);
     color: #FFFFFF;
     transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
 }
 
 /* ---------------------------------------------------------
-   6. Animasi
+   6. Reveal Animasi Halus on Scroll (Modern Slide-Up + Fade)
    --------------------------------------------------------- */
-@keyframes lifesync-float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-12px); }
-}
-
-@keyframes lifesync-float-slow {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-8px); }
-}
-
-.animate-float {
-    animation: lifesync-float 5s ease-in-out infinite;
-}
-
-.animate-float-slow {
-    animation: lifesync-float-slow 6.5s ease-in-out infinite;
-}
-
-/* Reveal on scroll */
 .reveal {
     opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(22px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -275,7 +329,7 @@ section[id] {
 .reveal-delay-4 { transition-delay: 0.32s; }
 
 /* ---------------------------------------------------------
-   7. Aksesibilitas - reduced motion
+   7. Aksesibilitas - Reduced Motion
    --------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -291,7 +345,7 @@ section[id] {
     }
 
     .reveal {
-        opacity: 1;
-        transform: none;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
